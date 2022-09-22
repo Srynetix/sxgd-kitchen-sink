@@ -152,7 +152,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/sxgd/nodes/ui/SxFadingRichTextLabel/SxFadingRichTextLabel.gd"
 }, {
-"base": "Panel",
+"base": "SxFullScreenDialog",
 "class": "SxFullScreenConfirmationDialog",
 "language": "GDScript",
 "path": "res://addons/sxgd/nodes/ui/SxFullScreenConfirmationDialog/SxFullScreenConfirmationDialog.gd"
