@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://addons/sxgd/modules/SxVirtualControls/SxVirtualControls.gd" type="Script" id=1]
+[ext_resource path="res://addons/sxgd/modules/SxVirtualControls/SxVirtualButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/sxgd/modules/SxVirtualControls/SxVirtualJoystick.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/sxgd/modules/SxVirtualControls/assets/textures/transparentDark/transparentDark34.png" type="Texture" id=4]
+[ext_resource path="res://addons/sxgd/modules/SxVirtualControls/assets/textures/transparentDark/transparentDark35.png" type="Texture" id=5]
+[ext_resource path="res://addons/sxgd/assets/fonts/Jost-400-Book.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+margin_bottom = 133.0
+mouse_filter = 2
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+
+[node name="Label" type="Label" parent="MarginContainer"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 1008.0
+margin_bottom = 229.0
+custom_fonts/font = SubResource( 1 )
+text = "The joystick is connected to the actions:
+- move_left
+- move_right
+- move_up
+- move_down
+
+The A button use the \"press_a\" action
+The B button use the \"press_b\" action"
+align = 1
+valign = 1
+
+[node name="SxVirtualControls" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+display_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="SxVirtualControls"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = 80
+custom_constants/margin_top = 80
+custom_constants/margin_left = 80
+custom_constants/margin_bottom = 80
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SxVirtualControls/MarginContainer"]
+margin_left = 80.0
+margin_top = 392.0
+margin_right = 944.0
+margin_bottom = 520.0
+mouse_filter = 2
+size_flags_vertical = 8
+
+[node name="SxVirtualJoystick" parent="SxVirtualControls/MarginContainer/HBoxContainer2" instance=ExtResource( 3 )]
+size_flags_horizontal = 2
+size_flags_vertical = 8
+action_axis_left = "move_left"
+action_axis_right = "move_right"
+action_axis_up = "move_up"
+action_axis_down = "move_down"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SxVirtualControls/MarginContainer/HBoxContainer2"]
+margin_left = 608.0
+margin_top = 16.0
+margin_right = 864.0
+margin_bottom = 112.0
+mouse_filter = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+custom_constants/separation = 64
+
+[node name="SxVirtualButton" parent="SxVirtualControls/MarginContainer/HBoxContainer2/HBoxContainer" instance=ExtResource( 2 )]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource( 4 )
+action_button = "press_a"
+
+[node name="SxVirtualButton2" parent="SxVirtualControls/MarginContainer/HBoxContainer2/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 160.0
+margin_right = 256.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource( 5 )
+action_button = "press_b"

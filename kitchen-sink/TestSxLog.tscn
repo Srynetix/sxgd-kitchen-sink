@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://kitchen-sink/TestSxLog.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 40
+custom_constants/margin_top = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 40
+
+[node name="Label" type="Label" parent="MarginContainer"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 984.0
+margin_bottom = 54.0
+size_flags_vertical = 0
+text = "Press F12 to open the Debug Tools, then F10 to show the log panel"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 16
+alignment = 1
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+margin_left = 279.0
+margin_top = 290.0
+margin_right = 421.0
+margin_bottom = 310.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Write a log message"
+
+[node name="Button2" type="Button" parent="HBoxContainer"]
+margin_left = 437.0
+margin_top = 290.0
+margin_right = 599.0
+margin_bottom = 310.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Write an error message"
+
+[node name="Button3" type="Button" parent="HBoxContainer"]
+margin_left = 615.0
+margin_top = 290.0
+margin_right = 745.0
+margin_bottom = 310.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Open Debug Tools"
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_write_log_message"]
+[connection signal="pressed" from="HBoxContainer/Button2" to="." method="_write_error_message"]
+[connection signal="pressed" from="HBoxContainer/Button3" to="." method="_open_debug_tools"]
