@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-web:
-    uses: ./.github/workflows/build-game.yml
+    uses: Srynetix/godot-github-workflows/.github/workflows/build-game-3.5.yml@main
     with:
       platform: HTML5
       name: sxgd-kitchen-sink
