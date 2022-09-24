@@ -26,6 +26,7 @@ _global_script_class_icons={
 "SxFALabel": "",
 "SxFXCamera": "",
 "SxFadingRichTextLabel": "",
+"SxFullScreenAcceptDialog": "",
 "SxFullScreenConfirmationDialog": "",
 "SxFullScreenDialog": "",
 "SxFullScreenFileDialog": "",
@@ -151,6 +152,11 @@ _global_script_classes=[ {
 "class": "SxFadingRichTextLabel",
 "language": "GDScript",
 "path": "res://addons/sxgd/nodes/ui/SxFadingRichTextLabel/SxFadingRichTextLabel.gd"
+}, {
+"base": "SxFullScreenDialog",
+"class": "SxFullScreenAcceptDialog",
+"language": "GDScript",
+"path": "res://addons/sxgd/nodes/ui/SxFullScreenAcceptDialog/SxFullScreenAcceptDialog.gd"
 }, {
 "base": "SxFullScreenDialog",
 "class": "SxFullScreenConfirmationDialog",
