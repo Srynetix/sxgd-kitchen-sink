@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://kitchen-sink/TestScreenEffectsSample.gd" type="Script" id=1]
 [ext_resource path="res://addons/sxgd/nodes/fx/screen-effects/SxMotionBlur/MotionBlur.gdshader" type="Shader" id=2]
@@ -9,6 +9,12 @@
 [ext_resource path="res://addons/sxgd/nodes/fx/screen-effects/SxBetterBlur/SxBetterBlur.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/sxgd/nodes/fx/screen-effects/SxVignette/Vignette.gdshader" type="Shader" id=8]
 [ext_resource path="res://addons/sxgd/nodes/fx/screen-effects/SxShockwave/Shockwave.gdshader" type="Shader" id=9]
+[ext_resource path="res://addons/sxgd/nodes/fx/screen-effects/SxFXDissolve/SxFXDissolve.tscn" type="PackedScene" id=10]
+[ext_resource path="res://addons/sxgd/nodes/fx/screen-effects/SxFXDissolve/SxFXDissolve.gdshader" type="Shader" id=11]
+[ext_resource path="res://addons/sxgd/nodes/fx/screen-effects/SxFXGrayscale/SxFXGrayscale.tscn" type="PackedScene" id=12]
+[ext_resource path="res://addons/sxgd/nodes/fx/screen-effects/SxFXGrayscale/SxFXGrayscale.gdshader" type="Shader" id=13]
+[ext_resource path="res://addons/sxgd/nodes/fx/screen-effects/SxFXChromaticAberration/SxFXChromaticAberration.tscn" type="PackedScene" id=14]
+[ext_resource path="res://addons/sxgd/nodes/fx/screen-effects/SxFXChromaticAberration/SxFXChromaticAberration.gdshader" type="Shader" id=15]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -30,6 +36,34 @@ shader = ExtResource( 2 )
 shader_param/angle_degrees = 0.0
 shader_param/samples = 10
 shader_param/strength = 0.0
+
+[sub_resource type="OpenSimplexNoise" id=4]
+resource_local_to_scene = true
+
+[sub_resource type="NoiseTexture" id=5]
+resource_local_to_scene = true
+noise = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+shader = ExtResource( 11 )
+shader_param/dissolution_level = 0.0
+shader_param/edge_width = 0.0
+shader_param/edge_color1 = Color( 0, 0, 0, 1 )
+shader_param/edge_color2 = Color( 0, 0, 0, 1 )
+shader_param/replacement_color = Color( 0, 0, 0, 1 )
+shader_param/noise = SubResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+shader = ExtResource( 13 )
+shader_param/ratio = 0.0
+
+[sub_resource type="ShaderMaterial" id=8]
+resource_local_to_scene = true
+shader = ExtResource( 15 )
+shader_param/apply = true
+shader_param/amount = 1.0
 
 [node name="ScreenEffectsSample" type="Control"]
 anchor_right = 1.0
@@ -75,6 +109,19 @@ visible = false
 [node name="SxBetterBlur" parent="Effects" instance=ExtResource( 7 )]
 visible = false
 
+[node name="SxFXDissolve" parent="Effects" instance=ExtResource( 10 )]
+visible = false
+material = SubResource( 6 )
+replacement_color = Color( 0, 0, 0, 1 )
+
+[node name="SxFXGrayscale" parent="Effects" instance=ExtResource( 12 )]
+visible = false
+material = SubResource( 7 )
+
+[node name="SxFXChromaticAberration" parent="Effects" instance=ExtResource( 14 )]
+visible = false
+material = SubResource( 8 )
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Margin" type="MarginContainer" parent="UI"]
@@ -85,6 +132,15 @@ custom_constants/margin_right = 240
 custom_constants/margin_top = 40
 custom_constants/margin_left = 40
 custom_constants/margin_bottom = 80
+
+[node name="Label" type="Label" parent="UI/Margin"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 784.0
+margin_bottom = 71.0
+size_flags_vertical = 0
+text = "Choose an effect with the dropdown,
+change parameters and press ENTER to validate."
 
 [node name="Margin" type="MarginContainer" parent="UI/Margin"]
 margin_left = 40.0

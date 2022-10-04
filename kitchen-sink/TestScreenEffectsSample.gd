@@ -7,6 +7,9 @@ onready var vignette := $Effects/SxVignette as SxVignette
 onready var shockwave := $Effects/SxShockwave as SxShockwave
 onready var motion_blur := $Effects/SxMotionBlur as SxMotionBlur
 onready var better_blur := $Effects/SxBetterBlur as SxBetterBlur
+onready var dissolve := $Effects/SxFXDissolve as SxFXDissolve
+onready var grayscale := $Effects/SxFXGrayscale as SxFXGrayscale
+onready var chroma := $Effects/SxFXChromaticAberration as SxFXChromaticAberration
 onready var texture := load("res://addons/sxgd/assets/textures/icon.png") as Texture
 
 var _sprites := Array()
@@ -36,7 +39,7 @@ func _ready() -> void:
     var viewport_size := get_viewport_rect().size
 
     var sprite_count := 50
-    for i in range(sprite_count):
+    for _i in range(sprite_count):
         var sprite := Sprite.new()
         sprite.texture = texture
         sprite.scale = Vector2(rand_range(0.5, 2), rand_range(0.5, 2))
@@ -51,6 +54,9 @@ func _ready() -> void:
     effect_selection.add_item("Shockwave")
     effect_selection.add_item("MotionBlur")
     effect_selection.add_item("BetterBlur")
+    effect_selection.add_item("Dissolve")
+    effect_selection.add_item("Grayscale")
+    effect_selection.add_item("ChromaticAberration")
     effect_selection.connect("item_selected", self, "_on_item_selected")
 
     _on_item_selected(0)
@@ -85,19 +91,22 @@ func _process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseButton:
-        _touched = event.pressed
-        if event.pressed:
-            _last_touched_position = event.position
+        var mouse_btn_event := event as InputEventMouseButton
+        _touched = mouse_btn_event.pressed
+        if mouse_btn_event.pressed:
+            _last_touched_position = mouse_btn_event.position
             _on_touch_position_update()
 
     elif event is InputEventMouseMotion:
+        var mouse_mot_event := event as InputEventMouseMotion
         if _touched:
-            _last_touched_position = event.position
+            _last_touched_position = mouse_mot_event.position
             _on_touch_position_update()
 
     elif event is InputEventScreenTouch:
+        var touch_event := event as InputEventScreenTouch
         if _touched:
-            _last_touched_position = event.position
+            _last_touched_position = touch_event.position
             _on_touch_position_update()
 
 func _build_params(effect: String) -> void:
@@ -105,57 +114,93 @@ func _build_params(effect: String) -> void:
         node.queue_free()
         params.remove_child(node)
 
-    if effect == "Vignette":
-        _pr_visible(vignette)
-        _pr_float(vignette, "vignette_size")
-        _pr_float(vignette, "vignette_ratio")
+    match effect:
+        "Vignette":
+            _pr_visible(vignette)
+            _pr_float(vignette, "vignette_size")
+            _pr_float(vignette, "vignette_ratio")
 
-    elif effect == "Shockwave":
-        _pr_visible(shockwave)
-        _pr_float(shockwave, "wave_size", FloatParamOptions.new().with_max_value(1))
-        _pr_float(shockwave, "force", FloatParamOptions.new().with_max_value(1))
-        _pr_float(shockwave, "thickness", FloatParamOptions.new().with_max_value(1))
-        _pr_vector2(shockwave, "wave_center")
+        "Shockwave":
+            _pr_visible(shockwave)
+            _pr_float(shockwave, "wave_size", FloatParamOptions.new().with_max_value(1))
+            _pr_float(shockwave, "force", FloatParamOptions.new().with_max_value(1))
+            _pr_float(shockwave, "thickness", FloatParamOptions.new().with_max_value(1))
+            _pr_vector2(shockwave, "wave_center")
 
-        var hbox := HBoxContainer.new()
-        hbox.size_flags_horizontal = SIZE_EXPAND_FILL
-        var btn := Button.new()
-        btn.text = "Animate"
-        btn.size_flags_horizontal = SIZE_EXPAND_FILL
-        btn.connect("pressed", self, "_animate_shockwave")
-        hbox.add_child(btn)
-        params.add_child(hbox)
+            var hbox := HBoxContainer.new()
+            hbox.size_flags_horizontal = SIZE_EXPAND_FILL
+            var btn := Button.new()
+            btn.text = "Animate"
+            btn.size_flags_horizontal = SIZE_EXPAND_FILL
+            btn.connect("pressed", self, "_animate_shockwave")
+            hbox.add_child(btn)
+            params.add_child(hbox)
 
-    elif effect == "MotionBlur":
-        _pr_visible(motion_blur)
-        _pr_float(motion_blur, "strength")
-        _pr_float(motion_blur, "angle_degrees")
+        "MotionBlur":
+            _pr_visible(motion_blur)
+            _pr_float(motion_blur, "strength")
+            _pr_float(motion_blur, "angle_degrees")
 
-    elif effect == "BetterBlur":
-        _pr_visible(better_blur)
-        _pr_float(better_blur, "strength")
+        "BetterBlur":
+            _pr_visible(better_blur)
+            _pr_float(better_blur, "strength")
+
+        "Dissolve":
+            _pr_visible(dissolve)
+            _pr_float(dissolve, "ratio")
+            _pr_color(dissolve, "replacement_color")
+            _pr_float(
+                dissolve,
+                "noise_period",
+                FloatParamOptions.new()\
+                    .with_min_value(1.0)\
+                    .with_max_value(128.0)
+            )
+
+        "Grayscale":
+            _pr_visible(grayscale)
+            _pr_float(grayscale, "ratio", FloatParamOptions.new().with_min_value(0.0).with_max_value(1.0))
+
+        "ChromaticAberration":
+            _pr_visible(chroma)
+            _pr_float(chroma, "amount", FloatParamOptions.new().with_min_value(0.0).with_max_value(5.0))
 
 func _update_params(effect: String) -> void:
-    if effect == "Vignette":
-        params.get_node("VignetteRatio/Value").value = vignette.vignette_ratio
-        params.get_node("VignetteSize/Value").value = vignette.vignette_size
+    match effect:
+        "Vignette":
+            params.get_node("VignetteRatio/Value").value = vignette.vignette_ratio
+            params.get_node("VignetteSize/Value").value = vignette.vignette_size
 
-    elif effect == "Shockwave":
-        var center := shockwave.wave_center
-        params.get_node("WaveCenter/VBox/X").value = center.x
-        params.get_node("WaveCenter/VBox/Y").value = center.y
-        params.get_node("Force/Value").value = shockwave.force
-        params.get_node("Thickness/Value").value = shockwave.thickness
-        params.get_node("WaveSize/Value").value = shockwave.wave_size
+        "Shockwave":
+            var center := shockwave.wave_center
+            params.get_node("WaveCenter/VBox/X").value = center.x
+            params.get_node("WaveCenter/VBox/Y").value = center.y
+            params.get_node("Force/Value").value = shockwave.force
+            params.get_node("Thickness/Value").value = shockwave.thickness
+            params.get_node("WaveSize/Value").value = shockwave.wave_size
 
-    elif effect == "MotionBlur":
-        params.get_node("Strength/Value").value = motion_blur.strength
-        params.get_node("AngleDegrees/Value").value = motion_blur.angle_degrees
+        "MotionBlur":
+            params.get_node("Strength/Value").value = motion_blur.strength
+            params.get_node("AngleDegrees/Value").value = motion_blur.angle_degrees
 
-    elif effect == "BetterBlur":
-        params.get_node("Strength/Value").value = better_blur.strength
+        "BetterBlur":
+            params.get_node("Strength/Value").value = better_blur.strength
+
+        "Dissolve":
+            params.get_node("Ratio/Value").value = dissolve.ratio
+            params.get_node("NoisePeriod/Value").value = dissolve.noise_period
+            params.get_node("ReplacementColor/Value").color = dissolve.replacement_color
+
+        "Grayscale":
+            params.get_node("Ratio/Value").value = grayscale.ratio
+
+        "ChromaticAberration":
+            params.get_node("Amount/Value").value = chroma.amount
 
 func _set_effect_visibility(value: bool, obj: Control) -> void:
+    match obj.name:
+        "ChromaticAberration":
+            chroma.enabled = value
     obj.visible = value
 
 func _pr_visible(control: Control) -> void:
@@ -172,6 +217,25 @@ func _pr_visible(control: Control) -> void:
     visible_hbox.add_child(visible_label)
     visible_hbox.add_child(visible_checkbox)
     params.add_child(visible_hbox)
+
+func _pr_color(control: Control, name: String) -> void:
+    var cap_name = SxText.to_pascal_case(name)
+    var current := control.get(name) as Color
+    var hbox = HBoxContainer.new()
+    hbox.name = cap_name
+    hbox.size_flags_horizontal = SIZE_EXPAND_FILL
+    var label_obj := Label.new()
+    label_obj.name = "Label"
+    label_obj.text = cap_name
+    var input := ColorPickerButton.new()
+    input.name = "Value"
+    input.size_flags_horizontal = SIZE_EXPAND_FILL
+    input.color = current
+
+    input.connect("color_changed", self, "_on_value_changed_color", [control, name])
+    hbox.add_child(label_obj)
+    hbox.add_child(input)
+    params.add_child(hbox)
 
 func _pr_float(control: Control, name: String, opts: FloatParamOptions = null) -> void:
     if opts == null:
@@ -242,6 +306,9 @@ func _animate_shockwave():
     shockwave.start_wave(Vector2(x.value, y.value))
 
 func _on_value_changed(value: float, obj: Control, name: String) -> void:
+    _update_shader(obj, name, value)
+
+func _on_value_changed_color(value: Color, obj: Control, name: String) -> void:
     _update_shader(obj, name, value)
 
 func _on_value_changed_vector2(value: float, coord: String, obj: Control, name: String) -> void:
