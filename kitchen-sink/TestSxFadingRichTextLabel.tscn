@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://addons/sxgd/nodes/ui/SxFadingRichTextLabel/SxFadingRichTextLabel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/sxgd/nodes/ui/SxFadingRichTextLabel/SxFadingRichTextLabel.gd" type="Script" id=1]
+[ext_resource path="res://addons/sxgd/nodes/ui/SxFadingRichTextLabel/SxFadingRichTextEffect.tres" type="RichTextEffect" id=2]
 
 [node name="Control" type="MarginContainer"]
 anchor_right = 1.0
@@ -10,20 +11,24 @@ custom_constants/margin_top = 40
 custom_constants/margin_left = 40
 custom_constants/margin_bottom = 40
 
-[node name="SxFadingRichTextLabel" parent="." instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="SxFadingRichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 40.0
 margin_top = 40.0
 margin_right = 924.0
 margin_bottom = 560.0
-bbcode_text = "Hello, this is a label with a fading effect!
+rect_min_size = Vector2( 500, 0 )
+mouse_filter = 2
+bbcode_enabled = true
+bbcode_text = "[right][right]Hello, this is a label with a fading effect!
 Here is another line!
 And here with [rainbow]effects![/rainbow]
-[shake]Wooooo![/shake]"
+[shake]Wooooo![/shake][/right][/right]"
 text = "Hello, this is a label with a fading effect!
 Here is another line!
 And here with effects!
 Wooooo!"
+scroll_active = false
+custom_effects = [ ExtResource( 2 ) ]
+script = ExtResource( 1 )
 autoplay = true
 text_alignment = 1

@@ -5,7 +5,7 @@
 [ext_resource path="res://addons/sxgd/nodes/fx/screen-effects/SxShockwave/SxShockwave.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/sxgd/nodes/fx/screen-effects/SxVignette/SxVignette.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/sxgd/nodes/fx/screen-effects/SxMotionBlur/SxMotionBlur.tscn" type="PackedScene" id=5]
-[ext_resource path="res://addons/sxgd/nodes/fx/SxFXCamera/SxFXCamera.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/sxgd/nodes/fx/SxFXCamera.gd" type="Script" id=6]
 [ext_resource path="res://addons/sxgd/nodes/fx/screen-effects/SxBetterBlur/SxBetterBlur.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/sxgd/nodes/fx/screen-effects/SxVignette/Vignette.gdshader" type="Shader" id=8]
 [ext_resource path="res://addons/sxgd/nodes/fx/screen-effects/SxShockwave/Shockwave.gdshader" type="Shader" id=9]
@@ -103,8 +103,9 @@ material = SubResource( 2 )
 visible = false
 material = SubResource( 3 )
 
-[node name="SxFXCamera" parent="Effects" instance=ExtResource( 6 )]
+[node name="SxFXCamera" parent="Effects" type="Camera2D"]
 visible = false
+script = ExtResource( 6 )
 
 [node name="SxBetterBlur" parent="Effects" instance=ExtResource( 7 )]
 visible = false
