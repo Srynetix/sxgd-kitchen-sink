@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/sxgd/modules/SxVirtualControls/SxVirtualControls.gd" type="Script" id=1]
+[ext_resource path="res://addons/sxgd/modules/SxVirtualControls/SxVirtualJoystick.gd" type="Script" id=2]
+[ext_resource path="res://addons/sxgd/modules/SxVirtualControls/assets/textures/transparentDark/transparentDark05.png" type="Texture" id=3]
+
+[node name="VirtualControls" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+display_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+mouse_filter = 2
+
+[node name="Move" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0.5 )
+margin_top = 368.0
+margin_right = 192.0
+margin_bottom = 560.0
+rect_min_size = Vector2( 192, 192 )
+size_flags_vertical = 8
+texture = ExtResource( 3 )
+expand = true
+script = ExtResource( 2 )
+action_axis_left = "move_left"
+action_axis_right = "move_right"
+
+[node name="Aim" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0.5 )
+margin_left = 792.0
+margin_top = 368.0
+margin_right = 984.0
+margin_bottom = 560.0
+rect_min_size = Vector2( 192, 192 )
+size_flags_horizontal = 10
+size_flags_vertical = 8
+texture = ExtResource( 3 )
+expand = true
+script = ExtResource( 2 )
+action_axis_left = "aim_left"
+action_axis_right = "aim_right"
+action_axis_up = "aim_up"
+action_axis_down = "aim_down"
+dead_zone = 0.1

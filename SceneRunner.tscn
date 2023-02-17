@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://addons/sxgd/modules/SxSceneRunner/SxSceneRunner.tscn" type="PackedScene" id=1]
-
-[node name="SceneRunner" instance=ExtResource( 1 )]
-show_back_button = false
-scene_folder = "res://kitchen-sink"
