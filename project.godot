@@ -362,8 +362,8 @@ _global_script_classes=[ {
 
 [application]
 
-config/name="sxgd dummy project"
-config/description="sxgd dummy project"
+config/name="sxgd kitchen sink"
+config/description="sxgd kitchen sink"
 run/main_scene="res://SxSceneRunner.tscn"
 
 [autoload]
