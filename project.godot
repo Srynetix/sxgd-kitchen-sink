@@ -49,7 +49,7 @@ _global_script_class_icons={
 "SxNode": "",
 "SxNodeTracer": "",
 "SxNodeTracerSystem": "",
-"SxNodeTracerUI": "",
+"SxNodeTracerUi": "",
 "SxOs": "",
 "SxRand": "",
 "SxRpcService": "",
@@ -270,9 +270,9 @@ _global_script_classes=[ {
 "path": "res://addons/sxgd/nodes/debug/SxNodeTracer/SxNodeTracerSystem.gd"
 }, {
 "base": "ColorRect",
-"class": "SxNodeTracerUI",
+"class": "SxNodeTracerUi",
 "language": "GDScript",
-"path": "res://addons/sxgd/nodes/debug/SxNodeTracer/SxNodeTracerUI.gd"
+"path": "res://addons/sxgd/nodes/debug/SxNodeTracer/SxNodeTracerUi.gd"
 }, {
 "base": "Reference",
 "class": "SxOs",
