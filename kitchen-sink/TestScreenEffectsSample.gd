@@ -3,13 +3,13 @@ extends Control
 onready var background := $Background as Control
 onready var effect_selection := $UI/Margin/Margin/HBox/EffectType/Value as OptionButton
 onready var params := $UI/Margin/Margin/HBox/Params as VBoxContainer
-onready var vignette := $Effects/SxVignette as SxVignette
-onready var shockwave := $Effects/SxShockwave as SxShockwave
-onready var motion_blur := $Effects/SxMotionBlur as SxMotionBlur
-onready var better_blur := $Effects/SxBetterBlur as SxBetterBlur
-onready var dissolve := $Effects/SxFXDissolve as SxFXDissolve
-onready var grayscale := $Effects/SxFXGrayscale as SxFXGrayscale
-onready var chroma := $Effects/SxFXChromaticAberration as SxFXChromaticAberration
+onready var vignette := $Effects/SxFxVignette as SxFxVignette
+onready var shockwave := $Effects/SxFxShockwave as SxFxShockwave
+onready var motion_blur := $Effects/SxFxMotionBlur as SxFxMotionBlur
+onready var better_blur := $Effects/SxFxBetterBlur as SxFxBetterBlur
+onready var dissolve := $Effects/SxFxDissolve as SxFxDissolve
+onready var grayscale := $Effects/SxFxGrayscale as SxFxGrayscale
+onready var chroma := $Effects/SxFxChromaticAberration as SxFxChromaticAberration
 onready var texture := load("res://addons/sxgd/assets/textures/icon.png") as Texture
 
 var _sprites := Array()

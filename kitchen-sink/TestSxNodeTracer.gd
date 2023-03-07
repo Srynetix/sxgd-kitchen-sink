@@ -4,10 +4,14 @@ const SPEED := 100
 
 onready var _sprite := $Sprite as Sprite
 onready var _sprite2 := $Sprite2 as Sprite
+onready var _sprite3 := $Sprite3 as Sprite
+onready var _sprite4 := $Sprite4 as Sprite
 
 onready var velocities := {
     _sprite: SxRand.unit_vec2(),
-    _sprite2: SxRand.unit_vec2()
+    _sprite2: SxRand.unit_vec2(),
+    _sprite3: SxRand.unit_vec2(),
+    _sprite4: SxRand.unit_vec2(),
 }
 
 

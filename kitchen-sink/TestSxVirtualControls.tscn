@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://addons/sxgd/modules/SxVirtualControls/SxVirtualControls.gd" type="Script" id=1]
-[ext_resource path="res://addons/sxgd/modules/SxVirtualControls/SxVirtualButton.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/sxgd/modules/SxVirtualControls/SxVirtualJoystick.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/sxgd/modules/SxVirtualControls/SxVirtualButton.gd" type="Script" id=2]
+[ext_resource path="res://addons/sxgd/modules/SxVirtualControls/SxVirtualJoystick.gd" type="Script" id=3]
 [ext_resource path="res://addons/sxgd/modules/SxVirtualControls/assets/textures/transparentDark/transparentDark34.png" type="Texture" id=4]
 [ext_resource path="res://addons/sxgd/modules/SxVirtualControls/assets/textures/transparentDark/transparentDark35.png" type="Texture" id=5]
 [ext_resource path="res://addons/sxgd/assets/fonts/Jost-400-Book.ttf" type="DynamicFontData" id=6]
@@ -67,9 +67,10 @@ margin_bottom = 520.0
 mouse_filter = 2
 size_flags_vertical = 8
 
-[node name="SxVirtualJoystick" parent="SxVirtualControls/MarginContainer/HBoxContainer2" instance=ExtResource( 3 )]
+[node name="SxVirtualJoystick" parent="SxVirtualControls/MarginContainer/HBoxContainer2" type="TextureRect"]
 size_flags_horizontal = 2
 size_flags_vertical = 8
+script = ExtResource( 3 )
 action_axis_left = "move_left"
 action_axis_right = "move_right"
 action_axis_up = "move_up"
@@ -85,16 +86,20 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 custom_constants/separation = 64
 
-[node name="SxVirtualButton" parent="SxVirtualControls/MarginContainer/HBoxContainer2/HBoxContainer" instance=ExtResource( 2 )]
+[node name="SxVirtualButton" type="TextureRect" parent="SxVirtualControls/MarginContainer/HBoxContainer2/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0.5 )
 margin_right = 96.0
 margin_bottom = 96.0
 rect_min_size = Vector2( 96, 96 )
 size_flags_horizontal = 8
 size_flags_vertical = 8
 texture = ExtResource( 4 )
+expand = true
+script = ExtResource( 2 )
 action_button = "press_a"
 
-[node name="SxVirtualButton2" parent="SxVirtualControls/MarginContainer/HBoxContainer2/HBoxContainer" instance=ExtResource( 2 )]
+[node name="SxVirtualButton2" type="TextureRect" parent="SxVirtualControls/MarginContainer/HBoxContainer2/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0.5 )
 margin_left = 160.0
 margin_right = 256.0
 margin_bottom = 96.0
@@ -102,4 +107,6 @@ rect_min_size = Vector2( 96, 96 )
 size_flags_horizontal = 8
 size_flags_vertical = 8
 texture = ExtResource( 5 )
+expand = true
+script = ExtResource( 2 )
 action_button = "press_b"

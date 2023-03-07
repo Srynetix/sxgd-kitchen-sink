@@ -10,32 +10,33 @@ config_version=4
 
 _global_script_class_icons={
 "SxArray": "",
-"SxAudioMultiStreamPlayer": "",
-"SxBetterBlur": "",
+"SxAudioStreamPlayer": "",
 "SxBuffer": "",
 "SxClientPeer": "",
-"SxClientRPC": "",
+"SxClientRpc": "",
 "SxCmdLineParser": "",
 "SxColor": "",
 "SxContainer": "",
 "SxDebugInfo": "",
 "SxDebugTools": "",
 "SxDoubleTap": "",
-"SxFAButton": "",
-"SxFAFont": "",
-"SxFALabel": "",
-"SxFXCamera": "",
-"SxFXChromaticAberration": "",
-"SxFXDissolve": "",
-"SxFXGrayscale": "",
+"SxFaButton": "",
+"SxFaFont": "",
+"SxFaLabel": "",
 "SxFadingRichTextLabel": "",
 "SxFullScreenAcceptDialog": "",
 "SxFullScreenConfirmationDialog": "",
 "SxFullScreenDialog": "",
 "SxFullScreenFileDialog": "",
+"SxFxBetterBlur": "",
+"SxFxCamera": "",
+"SxFxChromaticAberration": "",
+"SxFxDissolve": "",
+"SxFxGrayscale": "",
+"SxFxMotionBlur": "",
+"SxFxShockwave": "",
+"SxFxVignette": "",
 "SxGameData": "",
-"SxGlobalAudioFxPlayer": "",
-"SxGlobalMusicPlayer": "",
 "SxInput": "",
 "SxItemList": "",
 "SxJson": "",
@@ -44,28 +45,25 @@ _global_script_class_icons={
 "SxLog": "",
 "SxLogPanel": "",
 "SxMath": "",
-"SxMotionBlur": "",
 "SxNetwork": "",
 "SxNode": "",
 "SxNodeTracer": "",
 "SxNodeTracerSystem": "",
-"SxNodeTracerUI": "",
-"SxOS": "",
-"SxRPCService": "",
+"SxNodeTracerUi": "",
+"SxOs": "",
 "SxRand": "",
+"SxRpcService": "",
 "SxSceneRunner": "",
 "SxSceneTransitioner": "",
 "SxServerPeer": "",
-"SxServerRPC": "",
+"SxServerRpc": "",
 "SxShader": "",
-"SxShockwave": "",
 "SxSyncBarrier": "",
 "SxSyncInput": "",
 "SxSyncPeerInput": "",
 "SxText": "",
 "SxTileMap": "",
-"SxUI": "",
-"SxVignette": "",
+"SxUi": "",
 "SxVirtualButton": "",
 "SxVirtualControls": "",
 "SxVirtualJoystick": ""
@@ -77,14 +75,9 @@ _global_script_classes=[ {
 "path": "res://addons/sxgd/extensions/SxArray.gd"
 }, {
 "base": "Node",
-"class": "SxAudioMultiStreamPlayer",
+"class": "SxAudioStreamPlayer",
 "language": "GDScript",
-"path": "res://addons/sxgd/nodes/audio/SxAudioMultiStreamPlayer/SxAudioMultiStreamPlayer.gd"
-}, {
-"base": "Control",
-"class": "SxBetterBlur",
-"language": "GDScript",
-"path": "res://addons/sxgd/nodes/fx/screen-effects/SxBetterBlur/SxBetterBlur.gd"
+"path": "res://addons/sxgd/nodes/audio/SxAudioStreamPlayer.gd"
 }, {
 "base": "Reference",
 "class": "SxBuffer",
@@ -97,14 +90,14 @@ _global_script_classes=[ {
 "path": "res://addons/sxgd/nodes/networking/SxClientPeer.gd"
 }, {
 "base": "Node",
-"class": "SxClientRPC",
+"class": "SxClientRpc",
 "language": "GDScript",
-"path": "res://addons/sxgd/nodes/networking/SxClientRPC.gd"
+"path": "res://addons/sxgd/nodes/networking/SxClientRpc.gd"
 }, {
 "base": "Node",
 "class": "SxCmdLineParser",
 "language": "GDScript",
-"path": "res://addons/sxgd/nodes/utils/SxCmdLineParser/SxCmdLineParser.gd"
+"path": "res://addons/sxgd/nodes/utils/SxCmdLineParser.gd"
 }, {
 "base": "Reference",
 "class": "SxColor",
@@ -119,7 +112,7 @@ _global_script_classes=[ {
 "base": "CanvasLayer",
 "class": "SxDebugInfo",
 "language": "GDScript",
-"path": "res://addons/sxgd/nodes/debug/SxDebugInfo/SxDebugInfo.gd"
+"path": "res://addons/sxgd/nodes/debug/SxDebugTools/SxDebugInfo.gd"
 }, {
 "base": "CanvasLayer",
 "class": "SxDebugTools",
@@ -129,42 +122,22 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "SxDoubleTap",
 "language": "GDScript",
-"path": "res://addons/sxgd/nodes/input/SxDoubleTap/SxDoubleTap.gd"
+"path": "res://addons/sxgd/nodes/input/SxDoubleTap.gd"
 }, {
 "base": "Button",
-"class": "SxFAButton",
+"class": "SxFaButton",
 "language": "GDScript",
-"path": "res://addons/sxgd/modules/SxFontAwesome/SxFAButton.gd"
+"path": "res://addons/sxgd/modules/SxFontAwesome/SxFaButton.gd"
 }, {
 "base": "Reference",
-"class": "SxFAFont",
+"class": "SxFaFont",
 "language": "GDScript",
-"path": "res://addons/sxgd/modules/SxFontAwesome/SxFAFont.gd"
+"path": "res://addons/sxgd/modules/SxFontAwesome/SxFaFont.gd"
 }, {
 "base": "Label",
-"class": "SxFALabel",
+"class": "SxFaLabel",
 "language": "GDScript",
-"path": "res://addons/sxgd/modules/SxFontAwesome/SxFALabel.gd"
-}, {
-"base": "Camera2D",
-"class": "SxFXCamera",
-"language": "GDScript",
-"path": "res://addons/sxgd/nodes/fx/SxFXCamera/SxFXCamera.gd"
-}, {
-"base": "ColorRect",
-"class": "SxFXChromaticAberration",
-"language": "GDScript",
-"path": "res://addons/sxgd/nodes/fx/screen-effects/SxFXChromaticAberration/SxFXChromaticAberration.gd"
-}, {
-"base": "ColorRect",
-"class": "SxFXDissolve",
-"language": "GDScript",
-"path": "res://addons/sxgd/nodes/fx/screen-effects/SxFXDissolve/SxFXDissolve.gd"
-}, {
-"base": "ColorRect",
-"class": "SxFXGrayscale",
-"language": "GDScript",
-"path": "res://addons/sxgd/nodes/fx/screen-effects/SxFXGrayscale/SxFXGrayscale.gd"
+"path": "res://addons/sxgd/modules/SxFontAwesome/SxFaLabel.gd"
 }, {
 "base": "RichTextLabel",
 "class": "SxFadingRichTextLabel",
@@ -174,37 +147,67 @@ _global_script_classes=[ {
 "base": "SxFullScreenDialog",
 "class": "SxFullScreenAcceptDialog",
 "language": "GDScript",
-"path": "res://addons/sxgd/nodes/ui/SxFullScreenAcceptDialog/SxFullScreenAcceptDialog.gd"
+"path": "res://addons/sxgd/nodes/ui/SxFullScreenAcceptDialog.gd"
 }, {
 "base": "SxFullScreenDialog",
 "class": "SxFullScreenConfirmationDialog",
 "language": "GDScript",
-"path": "res://addons/sxgd/nodes/ui/SxFullScreenConfirmationDialog/SxFullScreenConfirmationDialog.gd"
+"path": "res://addons/sxgd/nodes/ui/SxFullScreenConfirmationDialog.gd"
 }, {
 "base": "Panel",
 "class": "SxFullScreenDialog",
 "language": "GDScript",
-"path": "res://addons/sxgd/nodes/ui/SxFullScreenDialog/SxFullScreenDialog.gd"
+"path": "res://addons/sxgd/nodes/ui/SxFullScreenDialog.gd"
 }, {
 "base": "SxFullScreenDialog",
 "class": "SxFullScreenFileDialog",
 "language": "GDScript",
-"path": "res://addons/sxgd/nodes/ui/SxFullScreenFileDialog/SxFullScreenFileDialog.gd"
+"path": "res://addons/sxgd/nodes/ui/SxFullScreenFileDialog.gd"
+}, {
+"base": "Control",
+"class": "SxFxBetterBlur",
+"language": "GDScript",
+"path": "res://addons/sxgd/nodes/fx/screen-effects/SxFxBetterBlur/SxFxBetterBlur.gd"
+}, {
+"base": "Camera2D",
+"class": "SxFxCamera",
+"language": "GDScript",
+"path": "res://addons/sxgd/nodes/fx/SxFxCamera.gd"
+}, {
+"base": "ColorRect",
+"class": "SxFxChromaticAberration",
+"language": "GDScript",
+"path": "res://addons/sxgd/nodes/fx/screen-effects/SxFxChromaticAberration/SxFxChromaticAberration.gd"
+}, {
+"base": "ColorRect",
+"class": "SxFxDissolve",
+"language": "GDScript",
+"path": "res://addons/sxgd/nodes/fx/screen-effects/SxFxDissolve/SxFxDissolve.gd"
+}, {
+"base": "ColorRect",
+"class": "SxFxGrayscale",
+"language": "GDScript",
+"path": "res://addons/sxgd/nodes/fx/screen-effects/SxFxGrayscale/SxFxGrayscale.gd"
+}, {
+"base": "ColorRect",
+"class": "SxFxMotionBlur",
+"language": "GDScript",
+"path": "res://addons/sxgd/nodes/fx/screen-effects/SxFxMotionBlur/SxFxMotionBlur.gd"
+}, {
+"base": "ColorRect",
+"class": "SxFxShockwave",
+"language": "GDScript",
+"path": "res://addons/sxgd/nodes/fx/screen-effects/SxFxShockwave/SxFxShockwave.gd"
+}, {
+"base": "ColorRect",
+"class": "SxFxVignette",
+"language": "GDScript",
+"path": "res://addons/sxgd/nodes/fx/screen-effects/SxFxVignette/SxFxVignette.gd"
 }, {
 "base": "Node",
 "class": "SxGameData",
 "language": "GDScript",
-"path": "res://addons/sxgd/nodes/utils/SxGameData/SxGameData.gd"
-}, {
-"base": "Node",
-"class": "SxGlobalAudioFxPlayer",
-"language": "GDScript",
-"path": "res://addons/sxgd/nodes/audio/SxGlobalAudioFxPlayer/SxGlobalAudioFxPlayer.gd"
-}, {
-"base": "AudioStreamPlayer",
-"class": "SxGlobalMusicPlayer",
-"language": "GDScript",
-"path": "res://addons/sxgd/nodes/audio/SxGlobalMusicPlayer/SxGlobalMusicPlayer.gd"
+"path": "res://addons/sxgd/nodes/utils/SxGameData.gd"
 }, {
 "base": "Reference",
 "class": "SxInput",
@@ -214,7 +217,7 @@ _global_script_classes=[ {
 "base": "ItemList",
 "class": "SxItemList",
 "language": "GDScript",
-"path": "res://addons/sxgd/nodes/ui/SxItemList/SxItemList.gd"
+"path": "res://addons/sxgd/nodes/ui/SxItemList.gd"
 }, {
 "base": "Reference",
 "class": "SxJson",
@@ -229,7 +232,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "SxLoadCache",
 "language": "GDScript",
-"path": "res://addons/sxgd/nodes/utils/SxLoadCache/SxLoadCache.gd"
+"path": "res://addons/sxgd/nodes/utils/SxLoadCache.gd"
 }, {
 "base": "Reference",
 "class": "SxLog",
@@ -239,17 +242,12 @@ _global_script_classes=[ {
 "base": "MarginContainer",
 "class": "SxLogPanel",
 "language": "GDScript",
-"path": "res://addons/sxgd/nodes/debug/SxLogPanel/SxLogPanel.gd"
+"path": "res://addons/sxgd/nodes/debug/SxDebugTools/SxLogPanel.gd"
 }, {
 "base": "Reference",
 "class": "SxMath",
 "language": "GDScript",
 "path": "res://addons/sxgd/extensions/SxMath.gd"
-}, {
-"base": "ColorRect",
-"class": "SxMotionBlur",
-"language": "GDScript",
-"path": "res://addons/sxgd/nodes/fx/screen-effects/SxMotionBlur/SxMotionBlur.gd"
 }, {
 "base": "Reference",
 "class": "SxNetwork",
@@ -272,24 +270,24 @@ _global_script_classes=[ {
 "path": "res://addons/sxgd/nodes/debug/SxNodeTracer/SxNodeTracerSystem.gd"
 }, {
 "base": "ColorRect",
-"class": "SxNodeTracerUI",
+"class": "SxNodeTracerUi",
 "language": "GDScript",
-"path": "res://addons/sxgd/nodes/debug/SxNodeTracer/SxNodeTracerUI.gd"
+"path": "res://addons/sxgd/nodes/debug/SxNodeTracer/SxNodeTracerUi.gd"
 }, {
 "base": "Reference",
-"class": "SxOS",
+"class": "SxOs",
 "language": "GDScript",
-"path": "res://addons/sxgd/extensions/SxOS.gd"
-}, {
-"base": "Node",
-"class": "SxRPCService",
-"language": "GDScript",
-"path": "res://addons/sxgd/nodes/networking/SxRPCService.gd"
+"path": "res://addons/sxgd/extensions/SxOs.gd"
 }, {
 "base": "Reference",
 "class": "SxRand",
 "language": "GDScript",
 "path": "res://addons/sxgd/extensions/SxRand.gd"
+}, {
+"base": "Node",
+"class": "SxRpcService",
+"language": "GDScript",
+"path": "res://addons/sxgd/nodes/networking/SxRpcService.gd"
 }, {
 "base": "Control",
 "class": "SxSceneRunner",
@@ -299,7 +297,7 @@ _global_script_classes=[ {
 "base": "CanvasLayer",
 "class": "SxSceneTransitioner",
 "language": "GDScript",
-"path": "res://addons/sxgd/nodes/utils/SxSceneTransitioner/SxSceneTransitioner.gd"
+"path": "res://addons/sxgd/nodes/utils/SxSceneTransitioner.gd"
 }, {
 "base": "Node",
 "class": "SxServerPeer",
@@ -307,19 +305,14 @@ _global_script_classes=[ {
 "path": "res://addons/sxgd/nodes/networking/SxServerPeer.gd"
 }, {
 "base": "Node",
-"class": "SxServerRPC",
+"class": "SxServerRpc",
 "language": "GDScript",
-"path": "res://addons/sxgd/nodes/networking/SxServerRPC.gd"
+"path": "res://addons/sxgd/nodes/networking/SxServerRpc.gd"
 }, {
 "base": "Reference",
 "class": "SxShader",
 "language": "GDScript",
 "path": "res://addons/sxgd/extensions/SxShader.gd"
-}, {
-"base": "ColorRect",
-"class": "SxShockwave",
-"language": "GDScript",
-"path": "res://addons/sxgd/nodes/fx/screen-effects/SxShockwave/SxShockwave.gd"
 }, {
 "base": "Node",
 "class": "SxSyncBarrier",
@@ -347,14 +340,9 @@ _global_script_classes=[ {
 "path": "res://addons/sxgd/extensions/SxTileMap.gd"
 }, {
 "base": "Reference",
-"class": "SxUI",
+"class": "SxUi",
 "language": "GDScript",
-"path": "res://addons/sxgd/extensions/SxUI.gd"
-}, {
-"base": "ColorRect",
-"class": "SxVignette",
-"language": "GDScript",
-"path": "res://addons/sxgd/nodes/fx/screen-effects/SxVignette/SxVignette.gd"
+"path": "res://addons/sxgd/extensions/SxUi.gd"
 }, {
 "base": "TextureRect",
 "class": "SxVirtualButton",
@@ -374,14 +362,14 @@ _global_script_classes=[ {
 
 [application]
 
-config/name="sxgd dummy project"
-config/description="sxgd dummy project"
-run/main_scene="res://SceneRunner.tscn"
+config/name="sxgd kitchen sink"
+config/description="sxgd kitchen sink"
+run/main_scene="res://SxSceneRunner.tscn"
 
 [autoload]
 
-GameSceneTransitioner="*res://autoloads/GameSceneTransitioner.tscn"
-GameDebugTools="*res://autoloads/GameDebugTools.tscn"
+GameSceneTransitioner="*res://autoloads/GameSceneTransitioner.gd"
+GameDebugTools="*res://autoloads/GameDebugTools.gd"
 
 [debug]
 
@@ -397,6 +385,10 @@ enabled=PoolStringArray( "res://addons/sxgd/plugin.cfg" )
 [engine]
 
 version="3.5.1"
+
+[global]
+
+mouse=false
 
 [input_devices]
 
