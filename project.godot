@@ -12,11 +12,14 @@ _global_script_class_icons={
 "SxArray": "",
 "SxAudioStreamPlayer": "",
 "SxBuffer": "",
+"SxCVars": "",
 "SxClientPeer": "",
 "SxClientRpc": "",
 "SxCmdLineParser": "",
 "SxColor": "",
 "SxContainer": "",
+"SxDebugConsole": "",
+"SxDebugConsoleLineEdit": "",
 "SxDebugInfo": "",
 "SxDebugTools": "",
 "SxDoubleTap": "",
@@ -85,6 +88,11 @@ _global_script_classes=[ {
 "path": "res://addons/sxgd/extensions/SxBuffer.gd"
 }, {
 "base": "Node",
+"class": "SxCVars",
+"language": "GDScript",
+"path": "res://addons/sxgd/nodes/utils/SxCVars.gd"
+}, {
+"base": "Node",
 "class": "SxClientPeer",
 "language": "GDScript",
 "path": "res://addons/sxgd/nodes/networking/SxClientPeer.gd"
@@ -108,6 +116,16 @@ _global_script_classes=[ {
 "class": "SxContainer",
 "language": "GDScript",
 "path": "res://addons/sxgd/extensions/SxContainer.gd"
+}, {
+"base": "MarginContainer",
+"class": "SxDebugConsole",
+"language": "GDScript",
+"path": "res://addons/sxgd/nodes/debug/SxDebugConsole/SxDebugConsole.gd"
+}, {
+"base": "LineEdit",
+"class": "SxDebugConsoleLineEdit",
+"language": "GDScript",
+"path": "res://addons/sxgd/nodes/debug/SxDebugConsole/SxDebugConsoleLineEdit.gd"
 }, {
 "base": "CanvasLayer",
 "class": "SxDebugInfo",
@@ -370,6 +388,7 @@ run/main_scene="res://SxSceneRunner.tscn"
 
 GameSceneTransitioner="*res://autoloads/GameSceneTransitioner.gd"
 GameDebugTools="*res://autoloads/GameDebugTools.gd"
+GameCVars="*res://autoloads/GameCVars.gd"
 
 [debug]
 
