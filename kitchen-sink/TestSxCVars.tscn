@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/sxgd/assets/textures/icon.png" type="Texture" id=1]
+[ext_resource path="res://kitchen-sink/TestSxCVars.gd" type="Script" id=2]
+
+[node name="Control" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+margin_right = 984.0
+margin_bottom = 195.0
+bbcode_enabled = true
+bbcode_text = "SxCVars sample:
+
+This scene uses three CVars:
+- sprite_speed
+- sprite_rotation
+- sprite_color
+
+Try to modify it using the Console in the Debug Tools (F12 then F6).
+
+When the Console is open, type:
+
+- \"cvar_get sprite_speed\" to get its value,
+- \"cvar_set sprite_speed 100\" to modify it with the value 100."
+text = "SxCVars sample:
+
+This scene uses three CVars:
+- sprite_speed
+- sprite_rotation
+- sprite_color
+
+Try to modify it using the Console in the Debug Tools (F12 then F6).
+
+When the Console is open, type:
+
+- \"cvar_get sprite_speed\" to get its value,
+- \"cvar_set sprite_speed 100\" to modify it with the value 100."
+fit_content_height = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 511, 207 )
+texture = ExtResource( 1 )
