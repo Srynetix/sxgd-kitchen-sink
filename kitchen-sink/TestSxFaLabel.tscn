@@ -1,29 +1,25 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://bt2r5htaws0bp"]
 
-[ext_resource path="res://addons/sxgd/modules/SxFontAwesome/SxFaLabel.gd" type="Script" id=1]
-[ext_resource path="res://addons/sxgd/modules/SxFontAwesome/assets/otfs/Font Awesome 6 Free-Solid-900.otf" type="DynamicFontData" id=2]
-
-[sub_resource type="DynamicFont" id=1]
-size = 24
-font_data = ExtResource( 2 )
+[ext_resource type="Script" path="res://addons/sxgd/modules/SxFontAwesome/SxFaLabel.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://b0uwjlvt0sevu" path="res://addons/sxgd/modules/SxFontAwesome/assets/otfs/Font Awesome 6 Free-Solid-900.otf" id="2"]
 
 [node name="A" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
 [node name="SxFaLabel" type="Label" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -13.5
-margin_top = -12.0
-margin_right = 13.5
-margin_bottom = 12.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 1 )
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 24
 text = ""
-align = 1
-valign = 1
-script = ExtResource( 1 )
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1")
 icon_name = "arrow-left"

@@ -11,7 +11,7 @@ class _Vars:
     # For TestSxCVars
     var sprite_speed := 10.0
     var sprite_rotation := 0.0
-    var sprite_color := Color.white
+    var sprite_color := Color.WHITE
 
 func _init() -> void:
     _vars = _Vars.new()

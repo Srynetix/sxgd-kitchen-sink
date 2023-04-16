@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/laser.wav-22c22f54b80b354269aeeb4aba9c3d63.sample"
+type="AudioStreamWAV"
+uid="uid://bubgubexvlc5s"
+path="res://.godot/imported/laser.wav-22c22f54b80b354269aeeb4aba9c3d63.sample"
 
 [deps]
 
 source_file="res://assets/sounds/laser.wav"
-dest_files=[ "res://.import/laser.wav-22c22f54b80b354269aeeb4aba9c3d63.sample" ]
+dest_files=["res://.godot/imported/laser.wav-22c22f54b80b354269aeeb4aba9c3d63.sample"]
 
 [params]
 

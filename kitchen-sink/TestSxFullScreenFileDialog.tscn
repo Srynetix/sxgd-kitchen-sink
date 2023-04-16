@@ -1,33 +1,34 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://b1v4cm8hpp6mf"]
 
-[ext_resource path="res://addons/sxgd/nodes/ui/SxFullScreenFileDialog.gd" type="Script" id=1]
-[ext_resource path="res://kitchen-sink/TestSxFullScreenFileDialog.gd" type="Script" id=2]
+[ext_resource type="Script" path="res://addons/sxgd/nodes/ui/SxFullScreenFileDialog.gd" id="1"]
+[ext_resource type="Script" path="res://kitchen-sink/TestSxFullScreenFileDialog.gd" id="2"]
 
 [node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Button" type="Button" parent="CenterContainer"]
-margin_left = 415.0
-margin_top = 290.0
-margin_right = 609.0
-margin_bottom = 310.0
+layout_mode = 2
 text = "Open SxFullScreenFileDialog"
 
 [node name="SxFullScreenFileDialog" type="Panel" parent="."]
-script = ExtResource( 1 )
-shortcuts = [ {
+layout_mode = 0
+script = ExtResource("1")
+shortcuts = [{
 "name": "User Data",
 "path": "user://"
 }, {
 "name": "Source",
 "path": "res://"
-} ]
+}]
 file_filter = "*"
 
-[connection signal="pressed" from="CenterContainer/Button" to="SxFullScreenFileDialog" method="show"]
+[connection signal="pressed" from="CenterContainer/Button" to="SxFullScreenFileDialog" method="show_dialog"]

@@ -1,16 +1,16 @@
 extends Control
 
-onready var background := $Background as Control
-onready var effect_selection := $UI/Margin/Margin/HBox/EffectType/Value as OptionButton
-onready var params := $UI/Margin/Margin/HBox/Params as VBoxContainer
-onready var vignette := $Effects/SxFxVignette as SxFxVignette
-onready var shockwave := $Effects/SxFxShockwave as SxFxShockwave
-onready var motion_blur := $Effects/SxFxMotionBlur as SxFxMotionBlur
-onready var better_blur := $Effects/SxFxBetterBlur as SxFxBetterBlur
-onready var dissolve := $Effects/SxFxDissolve as SxFxDissolve
-onready var grayscale := $Effects/SxFxGrayscale as SxFxGrayscale
-onready var chroma := $Effects/SxFxChromaticAberration as SxFxChromaticAberration
-onready var texture := load("res://addons/sxgd/assets/textures/icon.png") as Texture
+@onready var background := $Background as Node2D
+@onready var effect_selection := $UI/Margin/Margin/HBox/EffectType/Value as OptionButton
+@onready var params := $UI/Margin/Margin/HBox/Params as VBoxContainer
+@onready var vignette := $Effects/SxFxVignette as SxFxVignette
+@onready var shockwave := $Effects/SxFxShockwave as SxFxShockwave
+@onready var motion_blur := $Effects/SxFxMotionBlur as SxFxMotionBlur
+@onready var better_blur := $Effects/SxFxBetterBlur as SxFxBetterBlur
+@onready var dissolve := $Effects/SxFxDissolve as SxFxDissolve
+@onready var grayscale := $Effects/SxFxGrayscale as SxFxGrayscale
+@onready var chroma := $Effects/SxFxChromaticAberration as SxFxChromaticAberration
+@onready var texture := load("res://addons/sxgd/assets/textures/icon.png") as Texture
 
 var _sprites := Array()
 var _touched := false
@@ -40,12 +40,12 @@ func _ready() -> void:
 
     var sprite_count := 50
     for _i in range(sprite_count):
-        var sprite := Sprite.new()
+        var sprite := Sprite2D.new()
         sprite.texture = texture
-        sprite.scale = Vector2(rand_range(0.5, 2), rand_range(0.5, 2))
-        sprite.position = Vector2(rand_range(0, viewport_size.x), rand_range(0, viewport_size.y))
+        sprite.scale = Vector2(randf_range(0.5, 2), randf_range(0.5, 2))
+        sprite.position = Vector2(randf_range(0, viewport_size.x), randf_range(0, viewport_size.y))
         sprite.modulate = SxColor.rand()
-        sprite.rotation_degrees = rand_range(0, 360)
+        sprite.rotation_degrees = randf_range(0, 360)
 
         _sprites.append(sprite)
         background.add_child(sprite)
@@ -57,7 +57,7 @@ func _ready() -> void:
     effect_selection.add_item("Dissolve")
     effect_selection.add_item("Grayscale")
     effect_selection.add_item("ChromaticAberration")
-    effect_selection.connect("item_selected", self, "_on_item_selected")
+    effect_selection.item_selected.connect(_on_item_selected)
 
     _on_item_selected(0)
 
@@ -65,7 +65,7 @@ func _process(delta: float) -> void:
     var viewport_size := get_viewport_rect().size
 
     for spr in _sprites:
-        var sprite := spr as Sprite
+        var sprite := spr as Sprite2D
         var position := sprite.position
         var rotation := sprite.rotation_degrees
         var texture_size := sprite.texture.get_size()
@@ -132,7 +132,7 @@ func _build_params(effect: String) -> void:
             var btn := Button.new()
             btn.text = "Animate"
             btn.size_flags_horizontal = SIZE_EXPAND_FILL
-            btn.connect("pressed", self, "_animate_shockwave")
+            btn.pressed.connect(_animate_shockwave)
             hbox.add_child(btn)
             params.add_child(hbox)
 
@@ -151,10 +151,10 @@ func _build_params(effect: String) -> void:
             _pr_color(dissolve, "replacement_color")
             _pr_float(
                 dissolve,
-                "noise_period",
+                "noise_frequency",
                 FloatParamOptions.new()\
-                    .with_min_value(1.0)\
-                    .with_max_value(128.0)
+                    .with_min_value(0.01)\
+                    .with_max_value(1.0)
             )
 
         "Grayscale":
@@ -188,7 +188,7 @@ func _update_params(effect: String) -> void:
 
         "Dissolve":
             params.get_node("Ratio/Value").value = dissolve.ratio
-            params.get_node("NoisePeriod/Value").value = dissolve.noise_period
+            params.get_node("NoiseFrequency/Value").value = dissolve.noise_frequency
             params.get_node("ReplacementColor/Value").color = dissolve.replacement_color
 
         "Grayscale":
@@ -208,12 +208,12 @@ func _pr_visible(control: Control) -> void:
     visible_hbox.size_flags_horizontal = SIZE_EXPAND_FILL
     var visible_label := Label.new()
     visible_label.text = "Visible"
-    visible_label.rect_min_size = Vector2(40, 0)
+    visible_label.custom_minimum_size = Vector2(40, 0)
     var visible_checkbox := CheckBox.new()
     visible_checkbox.size_flags_horizontal = SIZE_EXPAND_FILL
-    visible_checkbox.pressed = control.visible
+    visible_checkbox.button_pressed = control.visible
 
-    visible_checkbox.connect("toggled", self, "_set_effect_visibility", [control])
+    visible_checkbox.toggled.connect(_set_effect_visibility.bind(control))
     visible_hbox.add_child(visible_label)
     visible_hbox.add_child(visible_checkbox)
     params.add_child(visible_hbox)
@@ -232,7 +232,7 @@ func _pr_color(control: Control, name: String) -> void:
     input.size_flags_horizontal = SIZE_EXPAND_FILL
     input.color = current
 
-    input.connect("color_changed", self, "_on_value_changed_color", [control, name])
+    input.color_changed.connect(_on_value_changed_color.bind(control, name))
     hbox.add_child(label_obj)
     hbox.add_child(input)
     params.add_child(hbox)
@@ -249,7 +249,7 @@ func _pr_float(control: Control, name: String, opts: FloatParamOptions = null) -
     var label_obj := Label.new()
     label_obj.name = "Label"
     label_obj.text = cap_name
-    label_obj.rect_min_size = Vector2(opts.min_size_x, 0)
+    label_obj.custom_minimum_size = Vector2(opts.min_size_x, 0)
     var input := SpinBox.new()
     input.name = "Value"
     input.size_flags_horizontal = SIZE_EXPAND_FILL
@@ -258,7 +258,7 @@ func _pr_float(control: Control, name: String, opts: FloatParamOptions = null) -
     input.max_value = opts.max_value
     input.value = current
 
-    input.connect("value_changed", self, "_on_value_changed", [control, name])
+    input.value_changed.connect(_on_value_changed.bind(control, name))
     hbox.add_child(label_obj)
     hbox.add_child(input)
     params.add_child(hbox)
@@ -272,7 +272,7 @@ func _pr_vector2(control: Control, name: String, step: float = 0.01, min_size_x:
     var label_obj := Label.new()
     label_obj.name = "Label"
     label_obj.text = cap_name
-    label_obj.rect_min_size = Vector2(min_size_x, 0)
+    label_obj.custom_minimum_size = Vector2(min_size_x, 0)
     var vbox := VBoxContainer.new()
     vbox.name = "VBox"
     vbox.size_flags_horizontal = SIZE_EXPAND_FILL
@@ -289,8 +289,8 @@ func _pr_vector2(control: Control, name: String, step: float = 0.01, min_size_x:
     input_y.step = step
     input_y.value = current.y
 
-    input_x.connect("value_changed", self, "_on_value_changed_vector2", ["x", control, name])
-    input_y.connect("value_changed", self, "_on_value_changed_vector2", ["y", control, name])
+    input_x.value_changed.connect(_on_value_changed_vector2.bind("x", control, name))
+    input_y.value_changed.connect(_on_value_changed_vector2.bind("y", control, name))
     vbox.add_child(input_x)
     vbox.add_child(input_y)
     hbox.add_child(label_obj)

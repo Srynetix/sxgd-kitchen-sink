@@ -1,16 +1,17 @@
 extends Control
 
-onready var _double_tap := $SxDoubleTap as SxDoubleTap
-onready var _label := $MarginContainer/VBoxContainer/Label as Label
+@onready var _double_tap := $SxDoubleTap as SxDoubleTap
+@onready var _label := $MarginContainer/VBoxContainer/Label as Label
+
 var _timer: Timer
 
 func _ready() -> void:
-    _double_tap.connect("doubletap", self, "_on_double_tap")
+    _double_tap.doubletap.connect(_on_double_tap)
     _timer = Timer.new()
     _timer.wait_time = 1
     _timer.one_shot = true
     _timer.autostart = false
-    _timer.connect("timeout", self, "_on_timer_timeout")
+    _timer.timeout.connect(_on_timer_timeout)
     add_child(_timer)
 
 func _on_double_tap(touch_idx: int) -> void:
