@@ -20,6 +20,7 @@ config/features=PackedStringArray("4.0")
 GameCVars="*res://autoloads/GameCVars.gd"
 GameDebugTools="*res://autoloads/GameDebugTools.gd"
 GameSceneTransitioner="*res://autoloads/GameSceneTransitioner.gd"
+MainRpcService="*res://autoloads/MainRpcService.gd"
 
 [debug]
 

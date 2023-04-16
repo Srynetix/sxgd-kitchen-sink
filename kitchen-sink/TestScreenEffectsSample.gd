@@ -66,24 +66,24 @@ func _process(delta: float) -> void:
 
     for spr in _sprites:
         var sprite := spr as Sprite2D
-        var position := sprite.position
-        var rotation := sprite.rotation_degrees
+        var sprite_position := sprite.position
+        var sprite_rotation := sprite.rotation_degrees
         var texture_size := sprite.texture.get_size()
         var total_size := sprite.scale * texture_size
 
-        position.x -= sprite.scale.x * 100 * delta
-        rotation += sprite.scale.y * 10 * delta
+        sprite_position.x -= sprite.scale.x * 100 * delta
+        sprite_rotation += sprite.scale.y * 10 * delta
 
-        while rotation > 360:
-            rotation -= 360
+        while sprite_rotation > 360:
+            sprite_rotation -= 360
 
-        if position.x < -total_size.x:
-            position.x = viewport_size.x + total_size.x
-        elif position.x > viewport_size.x + total_size.x:
-            position.x = -total_size.x
+        if sprite_position.x < -total_size.x:
+            sprite_position.x = viewport_size.x + total_size.x
+        elif sprite_position.x > viewport_size.x + total_size.x:
+            sprite_position.x = -total_size.x
 
-        sprite.rotation_degrees = rotation
-        sprite.position = position
+        sprite.rotation_degrees = sprite_rotation
+        sprite.position = sprite_position
 
     var selected_idx := effect_selection.selected
     var selected_effect := effect_selection.get_item_text(selected_idx)
@@ -218,9 +218,9 @@ func _pr_visible(control: Control) -> void:
     visible_hbox.add_child(visible_checkbox)
     params.add_child(visible_hbox)
 
-func _pr_color(control: Control, name: String) -> void:
-    var cap_name = SxText.to_pascal_case(name)
-    var current := control.get(name) as Color
+func _pr_color(control: Control, pr_name: String) -> void:
+    var cap_name = SxText.to_pascal_case(pr_name)
+    var current := control.get(pr_name) as Color
     var hbox = HBoxContainer.new()
     hbox.name = cap_name
     hbox.size_flags_horizontal = SIZE_EXPAND_FILL
@@ -232,17 +232,17 @@ func _pr_color(control: Control, name: String) -> void:
     input.size_flags_horizontal = SIZE_EXPAND_FILL
     input.color = current
 
-    input.color_changed.connect(_on_value_changed_color.bind(control, name))
+    input.color_changed.connect(_on_value_changed_color.bind(control, pr_name))
     hbox.add_child(label_obj)
     hbox.add_child(input)
     params.add_child(hbox)
 
-func _pr_float(control: Control, name: String, opts: FloatParamOptions = null) -> void:
+func _pr_float(control: Control, pr_name: String, opts: FloatParamOptions = null) -> void:
     if opts == null:
         opts = FloatParamOptions.new()
 
-    var cap_name := SxText.to_pascal_case(name)
-    var current := control.get(name) as float
+    var cap_name := SxText.to_pascal_case(pr_name)
+    var current := control.get(pr_name) as float
     var hbox := HBoxContainer.new()
     hbox.name = cap_name
     hbox.size_flags_horizontal = SIZE_EXPAND_FILL
@@ -258,14 +258,14 @@ func _pr_float(control: Control, name: String, opts: FloatParamOptions = null) -
     input.max_value = opts.max_value
     input.value = current
 
-    input.value_changed.connect(_on_value_changed.bind(control, name))
+    input.value_changed.connect(_on_value_changed.bind(control, pr_name))
     hbox.add_child(label_obj)
     hbox.add_child(input)
     params.add_child(hbox)
 
-func _pr_vector2(control: Control, name: String, step: float = 0.01, min_size_x: float = 50) -> void:
-    var cap_name := SxText.to_pascal_case(name)
-    var current := control.get(name) as Vector2
+func _pr_vector2(control: Control, pr_name: String, step: float = 0.01, min_size_x: float = 50) -> void:
+    var cap_name := SxText.to_pascal_case(pr_name)
+    var current := control.get(pr_name) as Vector2
     var hbox := HBoxContainer.new()
     hbox.name = cap_name
     hbox.size_flags_horizontal = SIZE_EXPAND_FILL
@@ -289,36 +289,35 @@ func _pr_vector2(control: Control, name: String, step: float = 0.01, min_size_x:
     input_y.step = step
     input_y.value = current.y
 
-    input_x.value_changed.connect(_on_value_changed_vector2.bind("x", control, name))
-    input_y.value_changed.connect(_on_value_changed_vector2.bind("y", control, name))
+    input_x.value_changed.connect(_on_value_changed_vector2.bind("x", control, pr_name))
+    input_y.value_changed.connect(_on_value_changed_vector2.bind("y", control, pr_name))
     vbox.add_child(input_x)
     vbox.add_child(input_y)
     hbox.add_child(label_obj)
     hbox.add_child(vbox)
     params.add_child(hbox)
 
-func _update_shader(obj: Control, name: String, value) -> void:
-    obj.set(name, value)
+func _update_shader(obj: Control, pr_name: String, value: Variant) -> void:
+    obj.set(pr_name, value)
 
 func _animate_shockwave():
     var x := params.get_node("WaveCenter/VBox/X") as SpinBox
     var y := params.get_node("WaveCenter/VBox/Y") as SpinBox
     shockwave.start_wave(Vector2(x.value, y.value))
 
-func _on_value_changed(value: float, obj: Control, name: String) -> void:
-    _update_shader(obj, name, value)
+func _on_value_changed(value: float, obj: Control, pr_name: String) -> void:
+    _update_shader(obj, pr_name, value)
 
-func _on_value_changed_color(value: Color, obj: Control, name: String) -> void:
-    _update_shader(obj, name, value)
+func _on_value_changed_color(value: Color, obj: Control, pr_name: String) -> void:
+    _update_shader(obj, pr_name, value)
 
-func _on_value_changed_vector2(value: float, coord: String, obj: Control, name: String) -> void:
-    var current := obj.get(name) as Vector2
-    var param_name := name
+func _on_value_changed_vector2(value: float, coord: String, obj: Control, pr_name: String) -> void:
+    var current := obj.get(pr_name) as Vector2
 
     if coord == "x":
-        _update_shader(obj, param_name, Vector2(value, current.y))
+        _update_shader(obj, pr_name, Vector2(value, current.y))
     else:
-        _update_shader(obj, param_name, Vector2(current.x, value))
+        _update_shader(obj, pr_name, Vector2(current.x, value))
 
 func _on_touch_position_update() -> void:
     var viewport_size := get_viewport_rect().size
