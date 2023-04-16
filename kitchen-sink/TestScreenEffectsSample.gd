@@ -10,7 +10,7 @@ extends Control
 @onready var dissolve := $Effects/SxFxDissolve as SxFxDissolve
 @onready var grayscale := $Effects/SxFxGrayscale as SxFxGrayscale
 @onready var chroma := $Effects/SxFxChromaticAberration as SxFxChromaticAberration
-@onready var texture := load("res://addons/sxgd/assets/textures/icon.png") as Texture
+@onready var texture := load("res://addons/sxgd/assets/textures/icon.png") as Texture2D
 
 var _sprites := Array()
 var _touched := false

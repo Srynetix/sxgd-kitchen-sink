@@ -2,7 +2,7 @@
 
 [ext_resource path="res://addons/sxgd/modules/SxVirtualControls/SxVirtualControls.gd" type="Script" id=1]
 [ext_resource path="res://addons/sxgd/modules/SxVirtualControls/SxVirtualJoystick.gd" type="Script" id=2]
-[ext_resource path="res://addons/sxgd/modules/SxVirtualControls/assets/textures/transparentDark/transparentDark05.png" type="Texture" id=3]
+[ext_resource path="res://addons/sxgd/modules/SxVirtualControls/assets/textures/transparentDark/transparentDark05.png" type="Texture2D" id=3]
 
 [node name="VirtualControls" type="Control"]
 anchor_right = 1.0
@@ -21,18 +21,18 @@ theme_override_constants/margin_left = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 1004.0
-margin_bottom = 580.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 1004.0
+offset_bottom = 580.0
 mouse_filter = 2
 
 [node name="Move" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0.5 )
-margin_top = 368.0
-margin_right = 192.0
-margin_bottom = 560.0
-rect_min_size = Vector2( 192, 192 )
+offset_top = 368.0
+offset_right = 192.0
+offset_bottom = 560.0
+custom_minimum_size = Vector2( 192, 192 )
 size_flags_vertical = 8
 texture = ExtResource( 3 )
 expand = true
@@ -42,11 +42,11 @@ action_axis_right = "move_right"
 
 [node name="Aim" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0.5 )
-margin_left = 792.0
-margin_top = 368.0
-margin_right = 984.0
-margin_bottom = 560.0
-rect_min_size = Vector2( 192, 192 )
+offset_left = 792.0
+offset_top = 368.0
+offset_right = 984.0
+offset_bottom = 560.0
+custom_minimum_size = Vector2( 192, 192 )
 size_flags_horizontal = 10
 size_flags_vertical = 8
 texture = ExtResource( 3 )
