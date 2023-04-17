@@ -49,24 +49,24 @@ jobs:
         run: |
           mkdir -v -p "build/${{ inputs.platform }}"
           godot -v --headless --export-debug "${{ inputs.platform }}" "./build/${{ inputs.output_name }}"
-      - if: ${{ inputs.platform == 'HTML5' }}
+      - if: ${{ inputs.platform == 'Web' }}
         name: Install rsync 📚
         run: |
           apt-get update && apt-get install -y rsync
-      - if: ${{ inputs.platform == 'HTML5' && steps.extract_branch.outputs.branch != 'main' }}
+      - if: ${{ inputs.platform == 'Web' && steps.extract_branch.outputs.branch != 'main' }}
         name: Deploy to GitHub Pages (non-main) 🚀
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: gh-pages
           folder: build
           target-folder: ${{ steps.extract_branch.outputs.branch }}
-      - if: ${{ inputs.platform == 'HTML5' && steps.extract_branch.outputs.branch == 'main' }}
+      - if: ${{ inputs.platform == 'Web' && steps.extract_branch.outputs.branch == 'main' }}
         name: Deploy to GitHub Pages (main) 🚀
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: gh-pages
           folder: build
-      - if: ${{ inputs.platform != 'HTML5' }}
+      - if: ${{ inputs.platform != 'Web' }}
         name: Upload artifact
         uses: actions/upload-artifact@v1
         with:
