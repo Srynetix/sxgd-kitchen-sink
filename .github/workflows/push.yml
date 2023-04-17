@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-web-godot-3:
-    if: ${{ env.GITHUB_REF_NAME == 'godot-3.x' }} 
+    if: ${{ github.ref_name == 'godot-3.x' }} 
     uses: Srynetix/godot-github-workflows/.github/workflows/build-game-4.0.2.yml@main
     with:
       platform: Web
@@ -17,7 +17,7 @@ jobs:
       output_name: index.html
 
   build-web-main:
-    if: ${{ env.GITHUB_REF_NAME == 'main' }} 
+    if: ${{ github.ref_name == 'main' }} 
     uses: Srynetix/godot-github-workflows/.github/workflows/build-game-4.0.2.yml@main
     with:
       platform: Web
@@ -25,6 +25,6 @@ jobs:
       output_name: index.html
 
   gd4-test:
-    if: ${{ env.GITHUB_REF_NAME == 'gd4' }} 
+    if: ${{ github.ref_name == 'gd4' }} 
     steps:
       - run: echo "hello"
