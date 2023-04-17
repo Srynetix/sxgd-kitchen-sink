@@ -25,6 +25,7 @@ jobs:
       output_name: index.html
 
   gd4-test:
+    runs-on: ubuntu-20.04
     if: ${{ github.ref_name == 'gd4' }} 
     steps:
       - run: echo "hello"
