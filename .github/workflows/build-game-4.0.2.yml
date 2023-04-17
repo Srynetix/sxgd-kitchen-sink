@@ -54,6 +54,11 @@ jobs:
         name: Install rsync 📚
         run: |
           apt-get update && apt-get install -y rsync
+      - if: ${{ inputs.platform == 'Web' }}
+        name: Inject COI script
+        run: |
+          wget https://raw.githubusercontent.com/gzuidhof/coi-serviceworker/master/coi-serviceworker.min.js -O ./build/coi-serviceworker.min.js
+          sed -i 's#</head>#<script src="coi-serviceworker.min.js"></script></head>' ./build/index.html
       - if: ${{ inputs.platform == 'Web' && steps.extract_branch.outputs.branch != 'main' }}
         name: Deploy to GitHub Pages (non-main) 🚀
         uses: JamesIves/github-pages-deploy-action@v4.3.3
