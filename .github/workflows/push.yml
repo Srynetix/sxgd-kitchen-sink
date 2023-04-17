@@ -10,6 +10,6 @@ jobs:
   build-web:
     uses: ./.github/workflows/build-game-4.0.2.yml
     with:
-      platform: HTML5
+      platform: Web
       name: sxgd-kitchen-sink
       output_name: index.html
