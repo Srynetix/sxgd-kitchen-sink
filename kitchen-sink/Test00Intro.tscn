@@ -1,31 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://dufisi6t4n6ft"]
 
-[ext_resource path="res://addons/sxgd/assets/fonts/Jost-400-Book.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://addons/sxgd/assets/fonts/Jost-800-Heavy.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://kitchen-sink/Test00Intro.gd" type="Script" id=3]
-
-[sub_resource type="DynamicFont" id=1]
-size = 24
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 24
-font_data = ExtResource( 1 )
+[ext_resource type="Script" path="res://kitchen-sink/Test00Intro.gd" id="3"]
 
 [node name="Control" type="MarginContainer"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 3 )
+script = ExtResource("3")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_top = 156.0
-margin_right = 1024.0
-margin_bottom = 444.0
+layout_mode = 2
 size_flags_vertical = 6
-custom_fonts/bold_font = SubResource( 1 )
-custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "[center]Welcome on the [b]sxgd kitchen sink[/b]!
+text = "[center]Welcome on the [b]sxgd kitchen sink[/b]!
 
 It serves as a demo and test suite of all included scripts in [b]sxgd[/b].
 Use the [b]Next[/b] and [b]Prev[/b] buttons to navigate between the demos.
@@ -33,12 +20,4 @@ Use [b]Reset[/b] to reset the current demo.
 
 This kitchen sink is powered by the [b][url=https://srynetix.github.io/sxgd/#_sxscenerunner]SxSceneRunner[/url][/b] node,
 which automatically build a \"test suite\" from an input folder."
-text = "Welcome on the sxgd kitchen sink!
-
-It serves as a demo and test suite of all included scripts in sxgd.
-Use the Next and Prev buttons to navigate between the demos.
-Use Reset to reset the current demo.
-
-This kitchen sink is powered by the SxSceneRunner node,
-which automatically build a \"test suite\" from an input folder."
-fit_content_height = true
+fit_content = true

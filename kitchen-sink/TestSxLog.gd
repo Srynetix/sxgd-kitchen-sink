@@ -12,5 +12,5 @@ func _write_error_message():
     _logger.error("This is an error message!")
 
 func _open_debug_tools():
-    GameDebugTools.show()
+    GameDebugTools.show_tools()
     GameDebugTools.show_specific_panel(SxDebugTools.PanelType.LOG)

@@ -1,27 +1,30 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://cak4xivqtbisk"]
 
-[ext_resource path="res://addons/sxgd/nodes/ui/SxFullScreenConfirmationDialog.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://addons/sxgd/nodes/ui/SxFullScreenConfirmationDialog.gd" id="1"]
 
 [node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Button" type="Button" parent="CenterContainer"]
-margin_left = 385.0
-margin_top = 290.0
-margin_right = 638.0
-margin_bottom = 310.0
+layout_mode = 2
 text = "Open SxFullScreenConfirmationDialog"
 
 [node name="SxFullScreenConfirmationDialog" type="Panel" parent="."]
 visible = false
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+script = ExtResource("1")
 show_title = false
 
-[connection signal="pressed" from="CenterContainer/Button" to="SxFullScreenConfirmationDialog" method="show"]
+[connection signal="pressed" from="CenterContainer/Button" to="SxFullScreenConfirmationDialog" method="show_dialog"]

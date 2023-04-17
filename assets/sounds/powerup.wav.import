@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/powerup.wav-0cab05f26d6e2684539da479a436c98c.sample"
+type="AudioStreamWAV"
+uid="uid://cy2vrp26gfsoc"
+path="res://.godot/imported/powerup.wav-0cab05f26d6e2684539da479a436c98c.sample"
 
 [deps]
 
 source_file="res://assets/sounds/powerup.wav"
-dest_files=[ "res://.import/powerup.wav-0cab05f26d6e2684539da479a436c98c.sample" ]
+dest_files=["res://.godot/imported/powerup.wav-0cab05f26d6e2684539da479a436c98c.sample"]
 
 [params]
 

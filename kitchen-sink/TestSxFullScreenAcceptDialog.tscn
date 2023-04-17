@@ -1,27 +1,34 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://dv4xifg3puq58"]
 
-[ext_resource path="res://addons/sxgd/nodes/ui/SxFullScreenAcceptDialog.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://addons/sxgd/nodes/ui/SxFullScreenAcceptDialog.gd" id="1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0igtt"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Button" type="Button" parent="CenterContainer"]
-margin_left = 404.0
-margin_top = 290.0
-margin_right = 619.0
-margin_bottom = 310.0
+layout_mode = 2
 text = "Open SxFullScreenAcceptDialog"
 
 [node name="SxFullScreenAcceptDialog" type="Panel" parent="."]
 visible = false
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+theme_override_styles/panel = SubResource("StyleBoxFlat_0igtt")
+script = ExtResource("1")
 show_title = false
 
-[connection signal="pressed" from="CenterContainer/Button" to="SxFullScreenAcceptDialog" method="show"]
+[connection signal="pressed" from="CenterContainer/Button" to="SxFullScreenAcceptDialog" method="show_dialog"]
