@@ -9,9 +9,9 @@ on:
 jobs:
   build-web-godot-3:
     if: ${{ github.ref_name == 'godot-3.x' }} 
-    uses: Srynetix/godot-github-workflows/.github/workflows/build-game-4.0.2.yml@main
+    uses: Srynetix/godot-github-workflows/.github/workflows/build-game-3.5.1.yml@main
     with:
-      platform: Web
+      platform: HTML5
       name: sxgd-kitchen-sink
       output_name: index.html
 
