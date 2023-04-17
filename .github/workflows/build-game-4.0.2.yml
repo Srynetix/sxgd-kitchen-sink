@@ -44,11 +44,15 @@ jobs:
         if: ${{ inputs.debug == false }}
         run: |
           mkdir -v -p "build/${{ inputs.platform }}"
+          # Run twice due to a bug in Godot headless
+          godot -v --headless --export-release "${{ inputs.platform }}" "./build/${{ inputs.output_name }}"
           godot -v --headless --export-release "${{ inputs.platform }}" "./build/${{ inputs.output_name }}"
       - name: Build game (debug)
         if: ${{ inputs.debug == true }}
         run: |
           mkdir -v -p "build/${{ inputs.platform }}"
+          # Run twice due to a bug in Godot headless
+          godot -v --headless --export-debug "${{ inputs.platform }}" "./build/${{ inputs.output_name }}"
           godot -v --headless --export-debug "${{ inputs.platform }}" "./build/${{ inputs.output_name }}"
       - if: ${{ inputs.platform == 'Web' }}
         name: Install rsync 📚
