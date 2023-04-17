@@ -43,7 +43,7 @@ jobs:
         if: ${{ inputs.debug == false }}
         run: |
           mkdir -v -p "build/${{ inputs.platform }}"
-          godot -v --export "${{ inputs.platform }}" "./build/${{ inputs.output_name }}"
+          godot -v --export-release "${{ inputs.platform }}" "./build/${{ inputs.output_name }}"
       - name: Build game (debug)
         if: ${{ inputs.debug == true }}
         run: |
