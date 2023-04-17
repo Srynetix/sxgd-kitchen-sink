@@ -3,12 +3,27 @@ name: Push builds
 on:
   push:
     branches:
+      - gd4
+      - godot-3.x
       - main
 
 jobs:
-  build-web:
+  build-web-godot-3:
+    if: ${{ GITHUB_REF_NAME == 'godot-3.x' }} 
     uses: Srynetix/godot-github-workflows/.github/workflows/build-game-4.0.2.yml@main
     with:
       platform: Web
       name: sxgd-kitchen-sink
       output_name: index.html
+
+  build-web-main:
+    if: ${{ GITHUB_REF_NAME == 'main' }} 
+    uses: Srynetix/godot-github-workflows/.github/workflows/build-game-4.0.2.yml@main
+    with:
+      platform: Web
+      name: sxgd-kitchen-sink
+      output_name: index.html
+
+  gd4-test:
+    if: ${{ GITHUB_REF_NAME == 'gd4' }} 
+    run: echo "hello"
