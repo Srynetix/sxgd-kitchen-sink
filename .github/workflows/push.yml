@@ -26,7 +26,7 @@ jobs:
 
   build-test:
     if: ${{ github.ref_name == 'ci-force-main' }} 
-    uses: .github/workflows/build-game-4.0.2.yml
+    uses: ./.github/workflows/build-game-4.0.2.yml
     with:
       platform: Web
       name: sxgd-kitchen-sink
