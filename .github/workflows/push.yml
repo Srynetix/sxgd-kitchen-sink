@@ -26,4 +26,5 @@ jobs:
 
   gd4-test:
     if: ${{ GITHUB_REF_NAME == 'gd4' }} 
-    run: echo "hello"
+    steps:
+      run: echo "hello"
