@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-web:
-    uses: ./build-game-4.0.2.yml
+    uses: ./build-game-4.0.2.yml@gd4
     with:
       platform: HTML5
       name: sxgd-kitchen-sink
