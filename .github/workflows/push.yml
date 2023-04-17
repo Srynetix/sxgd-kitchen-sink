@@ -3,6 +3,7 @@ name: Push builds
 on:
   push:
     branches:
+      - ci-force-main
       - godot-3.x
       - main
 
@@ -21,4 +22,13 @@ jobs:
     with:
       platform: Web
       name: sxgd-kitchen-sink
+      output_name: index.html
+
+  build-test:
+    if: ${{ github.ref_name == 'ci-force-main' }} 
+    uses: .github/workflows/build-game-4.0.2.yml
+    with:
+      platform: Web
+      name: sxgd-kitchen-sink
+      target_folder: pouet
       output_name: index.html
