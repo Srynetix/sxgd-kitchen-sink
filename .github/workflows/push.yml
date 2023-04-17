@@ -3,12 +3,11 @@ name: Push builds
 on:
   push:
     branches:
-      - gd4
       - main
 
 jobs:
   build-web:
-    uses: ./.github/workflows/build-game-4.0.2.yml
+    uses: Srynetix/godot-github-workflows/.github/workflows/build-game-4.0.2.yml@main
     with:
       platform: Web
       name: sxgd-kitchen-sink
