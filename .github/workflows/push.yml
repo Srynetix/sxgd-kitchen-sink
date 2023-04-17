@@ -3,7 +3,6 @@ name: Push builds
 on:
   push:
     branches:
-      - gd4
       - godot-3.x
       - main
 
@@ -23,9 +22,3 @@ jobs:
       platform: Web
       name: sxgd-kitchen-sink
       output_name: index.html
-
-  gd4-test:
-    runs-on: ubuntu-20.04
-    if: ${{ github.ref_name == 'gd4' }} 
-    steps:
-      - run: echo "hello"
