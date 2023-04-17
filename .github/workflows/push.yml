@@ -18,7 +18,7 @@ jobs:
 
   build-web-main:
     if: ${{ github.ref_name == 'main' }} 
-    uses: Srynetix/godot-github-workflows/.github/workflows/build-game-4.0.2.yml@main
+    uses: ./.github/workflows/build-game-4.0.2.yml
     with:
       platform: Web
       name: sxgd-kitchen-sink
