@@ -22,6 +22,7 @@ jobs:
     with:
       platform: Web
       name: sxgd-kitchen-sink
+      use_main_folder: true
       output_name: index.html
 
   build-test:
@@ -30,5 +31,4 @@ jobs:
     with:
       platform: Web
       name: sxgd-kitchen-sink
-      target_folder: pouet
       output_name: index.html
