@@ -36,6 +36,7 @@ jobs:
       - name: Setup templates
         run: |
           mkdir -v -p ~/.local/share/godot/templates
+          ln -sv ~/.local/share/godot/templates ~/.local/share/godot/export_templates
           mv /root/.local/share/godot/templates/4.0.2.stable ~/.local/share/godot/templates/4.0.2.stable
           mkdir -v -p ~/.config/godot
           cp -v /root/.config/godot/editor_settings-4.tres ~/.config/godot/editor_settings-4.tres
