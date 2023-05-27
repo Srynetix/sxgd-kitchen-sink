@@ -35,7 +35,7 @@ enabled=PackedStringArray("res://addons/sxgd/plugin.cfg")
 
 [engine]
 
-version="4.0.2"
+version="4.0.3"
 
 [global]
 

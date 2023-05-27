@@ -40,7 +40,8 @@ func _start_client() -> void:
     _status_lbl.text = "Client connecting..."
 
 func _exit_tree() -> void:
-    _server.set_quit_status(true)
+    if _server:
+        _server.set_quit_status(true)
 
 func _on_server_players_updated(players: Dictionary) -> void:
     logger.info("Players updated %s" % players)
