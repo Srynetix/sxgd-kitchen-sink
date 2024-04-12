@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://addons/sxgd/nodes/fx/screen-effects/SxFxShockwave/SxFxShockwave.gd" id="3"]
 [ext_resource type="Script" path="res://addons/sxgd/nodes/fx/screen-effects/SxFxVignette/SxFxVignette.gd" id="4"]
 [ext_resource type="Script" path="res://addons/sxgd/nodes/fx/screen-effects/SxFxMotionBlur/SxFxMotionBlur.gd" id="5"]
-[ext_resource type="Script" path="res://addons/sxgd/nodes/fx/SxFxCamera.gd" id="6"]
+[ext_resource type="Script" path="res://addons/sxgd/nodes/fx/SxCamera2D.gd" id="6"]
 [ext_resource type="Script" path="res://addons/sxgd/nodes/fx/screen-effects/SxFxBetterBlur/SxFxBetterBlur.gd" id="7"]
 [ext_resource type="Script" path="res://addons/sxgd/nodes/fx/screen-effects/SxFxDissolve/SxFxDissolve.gd" id="10"]
 [ext_resource type="Script" path="res://addons/sxgd/nodes/fx/screen-effects/SxFxGrayscale/SxFxGrayscale.gd" id="12"]
@@ -55,7 +55,7 @@ mouse_filter = 2
 color = Color(1, 1, 1, 0)
 script = ExtResource("5")
 
-[node name="SxFxCamera" type="Camera2D" parent="Effects"]
+[node name="SxCamera2D" type="Camera2D" parent="Effects"]
 visible = false
 anchor_mode = 0
 script = ExtResource("6")

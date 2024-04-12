@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://62fc48w0qhsc"]
 
-[ext_resource type="Script" path="res://addons/sxgd/nodes/audio/SxAudioStreamPlayer.gd" id="1"]
+[ext_resource type="Script" path="res://addons/sxgd/nodes/audio/SxAudioMultiStreamPlayer.gd" id="1"]
 [ext_resource type="Script" path="res://addons/sxgd/modules/SxFontAwesome/SxFaButton.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://cy2vrp26gfsoc" path="res://assets/sounds/powerup.wav" id="3"]
 [ext_resource type="AudioStream" uid="uid://bkubo2tslu5ov" path="res://assets/sounds/explosion.wav" id="4"]
 [ext_resource type="AudioStream" uid="uid://bubgubexvlc5s" path="res://assets/sounds/laser.wav" id="5"]
-[ext_resource type="Script" path="res://kitchen-sink/TestSxAudioStreamPlayer.gd" id="6"]
+[ext_resource type="Script" path="res://kitchen-sink/TestSxAudioMultiStreamPlayer.gd" id="6"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -16,7 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6")
 
-[node name="SxAudioStreamPlayer" type="Node" parent="."]
+[node name="SxAudioMultiStreamPlayer" type="Node" parent="."]
 script = ExtResource("1")
 streams = {
 "explosion": ExtResource("4"),
@@ -39,7 +39,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "SxAudioStreamPlayer sample.
+text = "SxAudioMultiStreamPlayer sample.
 
 A, B and C are 3 simultaneous voices."
 horizontal_alignment = 1

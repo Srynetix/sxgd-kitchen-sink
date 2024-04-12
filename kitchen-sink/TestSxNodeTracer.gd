@@ -14,20 +14,17 @@ const SPEED := 100
     _sprite4: SxRand.unit_vec2(),
 }
 
-
 func _ready():
     for sprite in velocities:
-        var tracer := sprite.get_node("NodeTracer") as SxNodeTracer
+        var tracer := sprite.get_node("SxNodeTracer") as SxNodeTracer
         tracer.trace_parameter("Modulate", sprite.modulate)
-
 
 func _process(delta: float) -> void:
     for x in velocities:
         process_sprite(x, delta)
 
-
 func process_sprite(sprite: Sprite2D, delta: float) -> void:
-    var tracer := sprite.get_node("NodeTracer") as SxNodeTracer
+    var tracer := sprite.get_node("SxNodeTracer") as SxNodeTracer
     var vp_size := get_viewport_rect().size
     sprite.position += velocities[sprite] * delta * SPEED
 

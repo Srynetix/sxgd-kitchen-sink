@@ -13,7 +13,7 @@ config_version=5
 config/name="sxgd kitchen sink"
 config/description="sxgd kitchen sink"
 run/main_scene="res://SxSceneRunner.tscn"
-config/features=PackedStringArray("4.0")
+config/features=PackedStringArray("4.2")
 
 [autoload]
 
@@ -24,10 +24,10 @@ MainRpcService="*res://autoloads/MainRpcService.gd"
 
 [debug]
 
-gdscript/warnings/return_value_discarded=false
 gdscript/warnings/unsafe_property_access=true
 gdscript/warnings/unsafe_method_access=true
 gdscript/warnings/unsafe_call_argument=true
+gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
@@ -35,11 +35,19 @@ enabled=PackedStringArray("res://addons/sxgd/plugin.cfg")
 
 [engine]
 
-version="4.0.3"
+version="4.2.1"
 
 [global]
 
 mouse=false
+
+[input]
+
+a={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":96,"key_label":0,"unicode":178,"echo":false,"script":null)
+]
+}
 
 [input_devices]
 

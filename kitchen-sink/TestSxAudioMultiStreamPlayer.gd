@@ -3,7 +3,7 @@ extends Control
 @onready var voice_a := $MarginContainer/VBoxContainer/GridContainer/A as SxFaButton
 @onready var voice_b := $MarginContainer/VBoxContainer/GridContainer/B as SxFaButton
 @onready var voice_c := $MarginContainer/VBoxContainer/GridContainer/C as SxFaButton
-@onready var player := $SxAudioStreamPlayer as SxAudioStreamPlayer
+@onready var player := $SxAudioMultiStreamPlayer as SxAudioMultiStreamPlayer
 
 func _ready() -> void:
     voice_a.pressed.connect(player.play_key.bind("explosion"))

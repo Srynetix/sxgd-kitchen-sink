@@ -17,7 +17,7 @@ script = ExtResource("2")
 position = Vector2(203, 277)
 texture = ExtResource("3")
 
-[node name="NodeTracer" type="Node" parent="Sprite"]
+[node name="SxNodeTracer" type="Node" parent="Sprite"]
 script = ExtResource("1")
 
 [node name="Sprite2" type="Sprite2D" parent="."]
@@ -25,7 +25,7 @@ modulate = Color(0.164706, 0.8, 0.831373, 1)
 position = Vector2(828, 277)
 texture = ExtResource("3")
 
-[node name="NodeTracer" type="Node" parent="Sprite2"]
+[node name="SxNodeTracer" type="Node" parent="Sprite2"]
 script = ExtResource("1")
 
 [node name="Sprite3" type="Sprite2D" parent="."]
@@ -33,7 +33,7 @@ modulate = Color(0.164706, 0.8, 0.831373, 1)
 position = Vector2(511, 486)
 texture = ExtResource("3")
 
-[node name="NodeTracer" type="Node" parent="Sprite3"]
+[node name="SxNodeTracer" type="Node" parent="Sprite3"]
 script = ExtResource("1")
 
 [node name="Sprite4" type="Sprite2D" parent="."]
@@ -41,7 +41,7 @@ modulate = Color(0.164706, 0.8, 0.831373, 1)
 position = Vector2(507, 106)
 texture = ExtResource("3")
 
-[node name="NodeTracer" type="Node" parent="Sprite4"]
+[node name="SxNodeTracer" type="Node" parent="Sprite4"]
 script = ExtResource("1")
 
 [node name="Button" type="Button" parent="."]

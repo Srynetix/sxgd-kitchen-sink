@@ -1,7 +1,7 @@
-extends SxCVars
+extends Node
 
-class _Vars:
-    extends Object
+class Vars:
+    extends SxCVars.VarCollection
 
     var test_boolean := false
     var test_string := "hello"
@@ -14,5 +14,4 @@ class _Vars:
     var sprite_color := Color.WHITE
 
 func _init() -> void:
-    _vars = _Vars.new()
-    SxDebugConsole.bind_cvars(self)
+    SxCVars.bind_collection(Vars.new())
