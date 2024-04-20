@@ -1,11 +1,24 @@
 extends Control
 
+class Vars:
+    extends SxCVars.VarCollection
+
+    var test_boolean := false
+    var test_string := "hello"
+    var test_integer := 1
+    var test_float := 2.5
+
+    # For TestSxCVars
+    var sprite_speed := 10.0
+    var sprite_rotation := 0.0
+    var sprite_color := Color.WHITE
+
 @onready var sprite := $Sprite as Sprite2D
 
 var _velocity := SxRand.unit_vec2()
 
 func _ready() -> void:
-    pass
+    SxCVars.bind_collection(Vars.new())
 
 func _process(delta: float) -> void:
     var vp_size := get_viewport_rect().size

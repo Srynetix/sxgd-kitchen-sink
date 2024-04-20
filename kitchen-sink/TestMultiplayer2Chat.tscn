@@ -1,0 +1,293 @@
+[gd_scene load_steps=2 format=3 uid="uid://cduhpf0bjvpty"]
+
+[ext_resource type="Script" path="res://kitchen-sink/TestMultiplayer2Chat.gd" id="1_7fioo"]
+
+[node name="TestMultiplayer2Chat" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7fioo")
+
+[node name="Main" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 80
+
+[node name="Column" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Main/Column"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Main/Column/MarginContainer"]
+layout_mode = 2
+text = "Multiplayer Chat Sample
+A simple Client/Server multiplayer chat using SxNet nodes.
+Warning: BBCode is not escaped, but... ¯\\_(ツ)_/¯"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConnectPanel" type="Panel" parent="Main/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Margin" type="MarginContainer" parent="Main/Column/ConnectPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Column" type="VBoxContainer" parent="Main/Column/ConnectPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Main/Column/ConnectPanel/Margin/Column"]
+layout_mode = 2
+text = "Connect panel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Row" type="HBoxContainer" parent="Main/Column/ConnectPanel/Margin/Column"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Column" type="VBoxContainer" parent="Main/Column/ConnectPanel/Margin/Column/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Main/Column/ConnectPanel/Margin/Column/Row/Column"]
+layout_mode = 2
+text = "As a Server"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PortField" type="HBoxContainer" parent="Main/Column/ConnectPanel/Margin/Column/Row/Column"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main/Column/ConnectPanel/Margin/Column/Row/Column/PortField"]
+layout_mode = 2
+text = "Port"
+
+[node name="ServerPortInput" type="LineEdit" parent="Main/Column/ConnectPanel/Margin/Column/Row/Column/PortField"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "12340"
+
+[node name="MaxPlayersField" type="HBoxContainer" parent="Main/Column/ConnectPanel/Margin/Column/Row/Column"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main/Column/ConnectPanel/Margin/Column/Row/Column/MaxPlayersField"]
+layout_mode = 2
+text = "Max players"
+
+[node name="ServerMaxPlayersInput" type="LineEdit" parent="Main/Column/ConnectPanel/Margin/Column/Row/Column/MaxPlayersField"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "32"
+
+[node name="UseWebsocketsField" type="HBoxContainer" parent="Main/Column/ConnectPanel/Margin/Column/Row/Column"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main/Column/ConnectPanel/Margin/Column/Row/Column/UseWebsocketsField"]
+layout_mode = 2
+text = "Use WebSockets?"
+
+[node name="ServerUseWebsocketsInput" type="CheckBox" parent="Main/Column/ConnectPanel/Margin/Column/Row/Column/UseWebsocketsField"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ServerHostButton" type="Button" parent="Main/Column/ConnectPanel/Margin/Column/Row/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Host"
+
+[node name="Column2" type="VBoxContainer" parent="Main/Column/ConnectPanel/Margin/Column/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Main/Column/ConnectPanel/Margin/Column/Row/Column2"]
+layout_mode = 2
+text = "As a Client"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AddressField" type="HBoxContainer" parent="Main/Column/ConnectPanel/Margin/Column/Row/Column2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main/Column/ConnectPanel/Margin/Column/Row/Column2/AddressField"]
+layout_mode = 2
+text = "Server address"
+
+[node name="ClientServerAddressInput" type="LineEdit" parent="Main/Column/ConnectPanel/Margin/Column/Row/Column2/AddressField"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "localhost:12340"
+
+[node name="UseWebsocketsField" type="HBoxContainer" parent="Main/Column/ConnectPanel/Margin/Column/Row/Column2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main/Column/ConnectPanel/Margin/Column/Row/Column2/UseWebsocketsField"]
+layout_mode = 2
+text = "Use WebSockets?"
+
+[node name="ClientUseWebsocketsInput" type="CheckBox" parent="Main/Column/ConnectPanel/Margin/Column/Row/Column2/UseWebsocketsField"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClientJoinButton" type="Button" parent="Main/Column/ConnectPanel/Margin/Column/Row/Column2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Join"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/Column"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ServerPanel" type="Panel" parent="Main/Column/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Margin" type="MarginContainer" parent="Main/Column/HBoxContainer/ServerPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Column" type="VBoxContainer" parent="Main/Column/HBoxContainer/ServerPanel/Margin"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main/Column/HBoxContainer/ServerPanel/Margin/Column"]
+layout_mode = 2
+text = "Server panel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Row" type="HBoxContainer" parent="Main/Column/HBoxContainer/ServerPanel/Margin/Column"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ClientsColumn" type="VBoxContainer" parent="Main/Column/HBoxContainer/ServerPanel/Margin/Column/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Main/Column/HBoxContainer/ServerPanel/Margin/Column/Row/ClientsColumn"]
+layout_mode = 2
+text = "Connected clients"
+
+[node name="ServerConnectedClientsTree" type="Tree" parent="Main/Column/HBoxContainer/ServerPanel/Margin/Column/Row/ClientsColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ClientPanel" type="Panel" parent="Main/Column/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Margin" type="MarginContainer" parent="Main/Column/HBoxContainer/ClientPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Column" type="VBoxContainer" parent="Main/Column/HBoxContainer/ClientPanel/Margin"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main/Column/HBoxContainer/ClientPanel/Margin/Column"]
+layout_mode = 2
+text = "Client panel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Row" type="HBoxContainer" parent="Main/Column/HBoxContainer/ClientPanel/Margin/Column"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ClientsColumn" type="VBoxContainer" parent="Main/Column/HBoxContainer/ClientPanel/Margin/Column/Row"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main/Column/HBoxContainer/ClientPanel/Margin/Column/Row/ClientsColumn"]
+layout_mode = 2
+text = "Connected clients"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClientConnectedClientsTree" type="Tree" parent="Main/Column/HBoxContainer/ClientPanel/Margin/Column/Row/ClientsColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ChatColumn" type="VBoxContainer" parent="Main/Column/HBoxContainer/ClientPanel/Margin/Column/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Main/Column/HBoxContainer/ClientPanel/Margin/Column/Row/ChatColumn"]
+layout_mode = 2
+text = "Chat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="Main/Column/HBoxContainer/ClientPanel/Margin/Column/Row/ChatColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ClientChatContent" type="RichTextLabel" parent="Main/Column/HBoxContainer/ClientPanel/Margin/Column/Row/ChatColumn/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+scroll_following = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/Column/HBoxContainer/ClientPanel/Margin/Column/Row/ChatColumn"]
+layout_mode = 2
+
+[node name="ClientChatEdit" type="LineEdit" parent="Main/Column/HBoxContainer/ClientPanel/Margin/Column/Row/ChatColumn/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClientChatSendButton" type="Button" parent="Main/Column/HBoxContainer/ClientPanel/Margin/Column/Row/ChatColumn/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Send"

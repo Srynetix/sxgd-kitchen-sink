@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://clph1uerknhev"]
+
+[ext_resource type="Script" path="res://kitchen-sink/TestMultiplayer1Dummy.gd" id="1_o3lgk"]
+
+[node name="TestMultiplayer1Dummy" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_o3lgk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Dummy Multiplayer Test
+Press \"Host\" to start a server
+Press \"Join (Client 1)\" to start the first client
+Press \"Join (Client 2)\" to start the second client
+Press \"Show logs\" to display the SxDebugTools Log panel.
+Press \"Show scene tree\" to display the SxDebugTools Scene Tree panel.
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HostButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Host"
+
+[node name="JoinClient1Button" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Join (Client 1)"
+
+[node name="JoinClient2Button" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Join (Client 2)"
+
+[node name="ShowLogs" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Show logs"
+
+[node name="ShowTree" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Show scene tree"

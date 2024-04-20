@@ -37,5 +37,6 @@ func process_sprite(sprite: Sprite2D, delta: float) -> void:
     tracer.trace_parameter("Velocity", velocities[sprite])
 
 func _show_panel():
-    GameDebugTools.show_tools()
-    GameDebugTools.show_specific_panel(SxDebugTools.PanelType.NODE_TRACER)
+    var instance := SxDebugTools.get_global_instance(get_tree())
+    instance.show_tools()
+    instance.show_specific_panel(SxDebugTools.PanelType.NODE_TRACER)
